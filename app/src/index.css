@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --ground: 244 246 243;   /* papel mineral, frío */
+  --surface: 255 255 255;
+  --ink: 24 31 38;
+  --ink2: 80 90 98;
+  --ink3: 130 140 146;
+  --line: 214 220 216;
+  --agua: 14 140 133;      /* verdigris: agua / cobre oxidado */
+  --mina: 194 90 30;       /* óxido: minería */
+  --edu: 76 91 212;        /* índigo: educación */
+  --salud: 139 138 31;     /* oliva: salud */
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --ground: 17 22 26;
+  --surface: 26 32 37;
+  --ink: 236 239 236;
+  --ink2: 178 186 184;
+  --ink3: 120 130 128;
+  --line: 52 62 66;
+  --agua: 34 161 152;
+  --mina: 212 106 42;
+  --edu: 123 136 232;
+  --salud: 156 154 46;
+}
+html { scroll-behavior: smooth; }
+body { @apply bg-ground text-ink font-sans antialiased; font-feature-settings: 'tnum' 1; }
+h1, h2, h3 { @apply font-display; letter-spacing: -0.01em; }
+.leaflet-container { background: rgb(var(--ground)); font: inherit; }
+.leaflet-tooltip.obs-tip { @apply bg-surface text-ink border border-line rounded px-2 py-1 text-xs shadow-none; }
+.evidence-a { @apply text-agua; } .evidence-b { @apply text-salud; } .evidence-c { @apply text-ink3; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+:focus-visible { outline: 2px solid rgb(var(--edu)); outline-offset: 2px; }

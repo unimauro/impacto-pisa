@@ -1,0 +1,58 @@
+{
+ "generado": "2026-09-25T15:59:01",
+ "n_distritos": 1826,
+ "cobertura": {
+  "edu": 1566,
+  "sed": 1276,
+  "pam": 247,
+  "reinfo": 1260,
+  "salud": 1789,
+  "socio": 1824,
+  "gasto": 1824,
+  "agua": 23
+ },
+ "sedimentos": {
+  "n": 28184,
+  "asignados": 28164,
+  "anios": "2000–2018",
+  "as_sobre_pel": 9134,
+  "hg_sobre_pel": 1213
+ },
+ "pam": {
+  "n": 6122
+ },
+ "reinfo": {
+  "n": 87334,
+  "vigente": 23791,
+  "suspendido": 63471
+ },
+ "sinadef": {
+  "anios_tasa": [
+   2019,
+   2025
+  ],
+  "def_total": 1193803,
+  "t56_total_2017_2026": 4
+ },
+ "enla": {
+  "n_distritos": 1586
+ },
+ "referencias": {
+  "as": {
+   "eca_suelo_agr": 50,
+   "ccme_pel": 17
+  },
+  "hg": {
+   "eca_suelo_agr": 6600,
+   "ccme_pel": 486
+  },
+  "pb": {
+   "eca_suelo_agr": 70,
+   "ccme_pel": 91.3
+  },
+  "cd": {
+   "eca_suelo_agr": 1.4,
+   "ccme_pel": 3.5
+  }
+ }
+}

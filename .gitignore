@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+app/dist/
+data/raw/*.geojson
+data/raw/*.csv
+data/raw/_descarga.log
+data/processed/_sinadef.log
+.DS_Store
+.pytest_cache/
