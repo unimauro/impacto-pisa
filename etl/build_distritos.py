@@ -169,6 +169,65 @@ for u, row in tot.iterrows():
     if u in serie.index: d["def_serie"] = {int(k): int(v) for k, v in serie.loc[u].items()}
 print("SINADEF distritos", len(tot))
 
+# ---------- 8b. OEFA: emergencias ambientales (ODES) y áreas de minería ilegal/informal (PIFA) ----------
+em = load("oefa-emergencias-ambientales.geojson"); c_em = collections.Counter(); c_em_hc = collections.Counter(); c_em_min = collections.Counter(); em_anios = collections.defaultdict(list)
+for f in em["features"]:
+    if not f.get("geometry"): continue
+    p = f["properties"]; lon, lat = f["geometry"]["coordinates"][:2]; u = locate(lon, lat)
+    if not u: continue
+    c_em[u] += 1
+    if p.get("SUBSECTOR") == "Hidrocarburos": c_em_hc[u] += 1
+    if p.get("SUBSECTOR") == "Minería": c_em_min[u] += 1
+    fe = p.get("FECHA_EMERGENCIA") or ""
+    if len(fe) >= 4: em_anios[u].append(fe[-4:])
+for u in c_em:
+    dist[u]["emerg_n"] = c_em[u]; dist[u]["emerg_hc_n"] = c_em_hc.get(u, 0); dist[u]["emerg_min_n"] = c_em_min.get(u, 0)
+    ys = sorted(em_anios[u]); dist[u]["emerg_anios"] = f"{ys[0]}–{ys[-1]}" if ys else None
+print("emergencias asignadas", sum(c_em.values()), "/", len(em["features"]))
+from shapely.ops import unary_union
+from pyproj import Geod
+geod = Geod(ellps="WGS84")
+def area_por_distrito(name, field):
+    acc = collections.defaultdict(float); n = 0
+    for f in load(name)["features"]:
+        if not f.get("geometry"): continue
+        try: g = shape(f["geometry"]).buffer(0)
+        except Exception: continue
+        n += 1
+        for i in tree.query(g):
+            inter = geoms[i].intersection(g)
+            if not inter.is_empty:
+                acc[keys[i]] += abs(geod.geometry_area_perimeter(inter)[0]) / 10000.0
+    for u, ha in acc.items(): dist[u][field] = round(ha, 1)
+    print(name, field, "poligonos", n, "distritos", len(acc), "ha", round(sum(acc.values())))
+area_por_distrito("oefa-mineria-ilegal-areas.geojson", "min_ilegal_ha")
+area_por_distrito("oefa-mineria-informal-areas.geojson", "min_informal_ha")
+
+# ---------- 8c. OEFA monitoreo de agua superficial (As/Hg/Pb/Cd) por distrito ----------
+fn = os.path.join(PROC, "oefa_agua_distrito.csv")
+if os.path.exists(fn):
+    oa = pd.read_csv(fn, dtype={"ubigeo": str}); n_ok = 0
+    for r in oa.itertuples(index=False):
+        d = dist.get(r.ubigeo)
+        if not d: continue
+        n_ok += 1; el = r.el
+        d[f"oefa_{el}_n"] = int(r.n); d[f"oefa_{el}_pct_a1"] = float(r.pct_sobre_a1); d[f"oefa_{el}_pct_cat3"] = float(r.pct_sobre_cat3); d[f"oefa_{el}_max"] = float(r.max)
+        d["oefa_agua_anios"] = f"{int(r.anio_min)}–{int(r.anio_max)}"; d["oefa_agua_n"] = d.get("oefa_agua_n", 0) + int(r.n)
+    print("OEFA agua filas unidas", n_ok)
+else: print("SIN oefa_agua_distrito.csv (ejecutar etl/oefa_agua.py)")
+
+# ---------- 8d. Educación complementaria (ECE 2016/2018 4P, ECE 2019 2S, ESCALE deserción/atraso) ----------
+fn = os.path.join(PROC, "educacion_extra.csv")
+if os.path.exists(fn):
+    ee = pd.read_csv(fn, dtype={"ubigeo": str}).set_index("ubigeo"); n_ok = 0
+    for u, row in ee.iterrows():
+        d = dist.get(u)
+        if not d: continue
+        n_ok += 1
+        for k, v in row.items():
+            if pd.notna(v): d[k] = round(float(v), 1)
+    print("educación extra unida", n_ok)
+
 # ---------- 9b. Gasto público por distrito (SIAF-MEF Datos Abiertos, agregado por QHAWAY; ubicación = unidad ejecutora) ----------
 for y in (2021, 2022, 2023, 2025, 2026):
     fn = os.path.join(RAW, f"mef-gasto-distrito-{y}.json")
@@ -187,8 +246,8 @@ rows = list(dist.values())
 def has(d, k): return d.get(k) is not None
 for d in rows:
     d["cob"] = {"edu": has(d, "enla_lec_sat"), "sed": has(d, "sed_n"), "pam": has(d, "pam_n"), "reinfo": has(d, "reinfo_total"),
-                "salud": has(d, "def_total_19_25"), "socio": has(d, "pobreza"), "gasto": has(d, "gasto_dev_2025"), "agua": any(a["ubigeo"] == d["ubigeo"] for a in pts_ag)}
-    for k in ("pam_n", "pam_residuo_n", "reinfo_vigente", "reinfo_suspendido", "reinfo_beneficio", "reinfo_total", "um_n", "um_produccion_n", "relaves_n", "mineria_ilegal_anp_n", "pasivos_hc_n", "riesgo_oefa_alto_n", "lotes_hc_n"):
+                "salud": has(d, "def_total_19_25"), "socio": has(d, "pobreza"), "gasto": has(d, "gasto_dev_2025"), "oefa_agua": has(d, "oefa_agua_n"), "ece16": has(d, "ece16_4p_lec_sat"), "desercion": has(d, "desercion_prim_23_24"), "agua": any(a["ubigeo"] == d["ubigeo"] for a in pts_ag)}
+    for k in ("emerg_n", "emerg_hc_n", "emerg_min_n", "pam_n", "pam_residuo_n", "reinfo_vigente", "reinfo_suspendido", "reinfo_beneficio", "reinfo_total", "um_n", "um_produccion_n", "relaves_n", "mineria_ilegal_anp_n", "pasivos_hc_n", "riesgo_oefa_alto_n", "lotes_hc_n"):
         d.setdefault(k, 0)  # conteo de un inventario nacional: 0 = no hay registro en ese inventario (no "sin dato")
 json.dump(rows, open(os.path.join(OUT, "distritos.json"), "w"), ensure_ascii=False, separators=(",", ":"))
 json.dump({"campos": ["lon", "lat", "as_ppm", "hg_ppb", "pb_ppm", "cd_ppm", "anio", "ubigeo", "codigo"], "n": len(pts_sed), "puntos": pts_sed},
@@ -200,7 +259,9 @@ res = {"generado": datetime.datetime.now().isoformat(timespec="seconds"), "n_dis
        "cobertura": {k: sum(1 for d in rows if d["cob"][k]) for k in rows[0]["cob"]},
        "sedimentos": {"n": len(pts_sed), "asignados": sum(1 for p in pts_sed if p[7]), "anios": "2000–2018",
                       "as_sobre_pel": sum(1 for p in pts_sed if p[2] is not None and p[2] > 17), "hg_sobre_pel": sum(1 for p in pts_sed if p[3] is not None and p[3] > 486)},
-       "pam": {"n": len(pts_pam)}, "reinfo": {"n": len(rf["features"]), "vigente": sum(c_v.values()), "suspendido": sum(c_s.values())},
+       "pam": {"n": len(pts_pam)}, "emergencias": {"n": len(em["features"]), "asignadas": sum(c_em.values())},
+       "mineria_ilegal_ha": round(sum(d.get("min_ilegal_ha", 0) for d in rows)), "mineria_informal_ha": round(sum(d.get("min_informal_ha", 0) for d in rows)),
+       "oefa_agua": {"muestras": int(sum(d.get("oefa_agua_n", 0) for d in rows)), "distritos": sum(1 for d in rows if d.get("oefa_agua_n"))}, "reinfo": {"n": len(rf["features"]), "vigente": sum(c_v.values()), "suspendido": sum(c_s.values())},
        "sinadef": {"anios_tasa": [A0, A1], "def_total": int(win[win.grupo == "total"].defunciones.sum()), "t56_total_2017_2026": int(sin[sin.grupo == "intox_metales"].defunciones.sum())},
        "enla": {"n_distritos": n_enla}, "referencias": REF}
 json.dump(res, open(os.path.join(OUT, "resumen.json"), "w"), ensure_ascii=False, indent=1)

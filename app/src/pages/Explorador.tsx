@@ -36,6 +36,9 @@ function Perfil({ d, nac, refs }: { d: Distrito; nac: Record<string, number | nu
   const serie = d.def_serie ? Object.entries(d.def_serie).filter(([y]) => +y >= 2017).sort() : []
   const n = (k: string) => (typeof d[k] === 'number' ? (d[k] as number) : null)
   const fuentesDoc = [
+    ['Emergencias ambientales atendidas por OEFA', d.emerg_n, d.emerg_n ? `${d.emerg_hc_n} de hidrocarburos, ${d.emerg_min_n} de minería · ${d.emerg_anios ?? ''}` : '', 'OEFA ODES 2011–2026'],
+    ['Área de minería ilegal identificada', n('min_ilegal_ha') ? Math.round(n('min_ilegal_ha')!) : 0, n('min_ilegal_ha') ? 'hectáreas intersectadas con el distrito (UFAFEMA-PPO, GORE, REINFO excluido)' : '', 'OEFA PIFA'],
+    ['Área de minería informal (REINFO)', n('min_informal_ha') ? Math.round(n('min_informal_ha')!) : 0, n('min_informal_ha') ? 'hectáreas declaradas por inscritos' : '', 'OEFA PIFA'],
     ['Registros REINFO (mineros en formalización)', d.reinfo_total, `${d.reinfo_vigente} vigentes, ${d.reinfo_suspendido} suspendidos, ${d.reinfo_beneficio} plantas de beneficio`, 'MINEM vía GEOCATMIN'],
     ['Pasivos ambientales mineros', d.pam_n, `${d.pam_residuo_n} son residuos (relaves, desmontes)`, 'MINEM'],
     ['Unidades mineras formales', d.um_n, `${d.um_produccion_n} en producción`, 'MINEM/OSINERGMIN'],
@@ -88,6 +91,15 @@ function Perfil({ d, nac, refs }: { d: Distrito; nac: Record<string, number | nu
             </> : <p className="mt-2 text-sm text-ink2">INGEMMET no tiene muestras de sedimento georreferenciadas dentro de este distrito. Eso no significa que no haya contaminación: significa que no se ha medido.</p>}
           </Panel>
           <Panel>
+            <div className="flex items-baseline justify-between"><h3 className="font-medium">Calidad del agua superficial medida por OEFA</h3>{d.oefa_agua_n ? <Evidencia n="A">{fmtInt(d.oefa_agua_n)} análisis · {d.oefa_agua_anios}</Evidencia> : <Evidencia n="D" />}</div>
+            {d.oefa_agua_n ? <>
+              <Tabla className="mt-2"><thead><tr><th>Metal</th><th className="text-right">análisis</th><th className="text-right">% &gt; ECA A1</th><th className="text-right">% &gt; ECA cat. 3</th><th className="text-right">máx. (mg/L)</th><th className="text-right">ECA A1 / cat. 3</th></tr></thead><tbody>
+                {([['as', 'Arsénico', '0,01 / 0,1'], ['hg', 'Mercurio', '0,001 / 0,001'], ['pb', 'Plomo', '0,01 / 0,05'], ['cd', 'Cadmio', '0,003 / 0,01']] as const).map(([el, nm, ref]) => n(`oefa_${el}_n`) ? <tr key={el}><td>{nm}</td><td className="text-right tabular-nums">{fmtInt(n(`oefa_${el}_n`))}</td><td className={`text-right tabular-nums ${(n(`oefa_${el}_pct_a1`) ?? 0) > 25 ? 'text-mina font-medium' : ''}`}>{pct(n(`oefa_${el}_pct_a1`))}</td><td className="text-right tabular-nums">{pct(n(`oefa_${el}_pct_cat3`))}</td><td className="text-right tabular-nums">{fmt(n(`oefa_${el}_max`), 4)}</td><td className="text-right text-ink2">{ref}</td></tr> : null)}
+              </tbody></Tabla>
+              <p className="mt-2 text-xs text-ink2">Muestras de supervisión y evaluación ambiental de OEFA en cuerpos de agua superficial (ríos, quebradas, lagunas), no de agua de consumo. Muestreo dirigido a zonas con actividad fiscalizada: un % alto indica problema en los puntos medidos, no en todo el distrito. ECA Agua DS 004-2017-MINAM: A1 = potabilizable con desinfección; cat. 3 = riego y bebida de animales.</p>
+            </> : <p className="mt-2 text-sm text-ink2">OEFA no tiene análisis de metales en agua superficial georreferenciados en este distrito (2014–2026).</p>}
+          </Panel>
+          <Panel>
             <div className="flex items-baseline justify-between"><h3 className="font-medium">Mortalidad registrada (SINADEF, domicilio del fallecido)</h3>{d.def_total_19_25 ? <Evidencia n="A">{d.tasa_inestable ? 'población < 5 mil: tasas inestables' : 'tasas crudas 2019–2025'}</Evidencia> : <Evidencia n="D" />}</div>
             {d.def_total_19_25 ? <>
               <div className="mt-2 flex flex-wrap gap-x-8 gap-y-3">
@@ -108,6 +120,16 @@ function Perfil({ d, nac, refs }: { d: Distrito; nac: Record<string, number | nu
               <Kpi v={pct(d.enla_cob_ie)} l="cobertura de colegios" />
             </div> : <p className="mt-2 text-sm text-ink2">UMC no publica resultado distrital (menos de 10 estudiantes o cobertura insuficiente).</p>}
             {(d.enla_cob_est ?? 100) < 80 && <p className="mt-2 text-xs text-mina">Cobertura de estudiantes menor al 80 %: el resultado puede no representar al distrito.</p>}
+            <div className="mt-3 text-sm text-ink2">Serie distrital (misma escala según UMC) y otros indicadores</div>
+            <Tabla className="mt-1"><thead><tr><th>Indicador</th><th className="text-right">2016</th><th className="text-right">2018</th><th className="text-right">2019</th><th className="text-right">2024</th><th className="text-right">2025</th></tr></thead><tbody>
+              <tr><td>4.º prim. lectura satisfactorio</td><td className="text-right tabular-nums">{pct(n('ece16_4p_lec_sat'))}</td><td className="text-right tabular-nums">{pct(n('ece18_4p_lec_sat'))}</td><td className="text-right">—</td><td className="text-right tabular-nums">{pct(d.enla_lec_sat)}</td><td className="text-right">—</td></tr>
+              <tr><td>4.º prim. matemática satisfactorio</td><td className="text-right tabular-nums">{pct(n('ece16_4p_mat_sat'))}</td><td className="text-right tabular-nums">{pct(n('ece18_4p_mat_sat'))}</td><td className="text-right">—</td><td className="text-right tabular-nums">{pct(d.enla_mat_sat)}</td><td className="text-right">—</td></tr>
+              <tr><td>2.º sec. lectura satisfactorio</td><td className="text-right">—</td><td className="text-right">—</td><td className="text-right tabular-nums">{pct(n('ece19_2s_lec_sat'))}</td><td className="text-right text-ink3">no evaluado</td><td className="text-right">—</td></tr>
+              <tr><td>2.º sec. matemática satisfactorio</td><td className="text-right">—</td><td className="text-right">—</td><td className="text-right tabular-nums">{pct(n('ece19_2s_mat_sat'))}</td><td className="text-right text-ink3">no evaluado</td><td className="text-right">—</td></tr>
+              <tr><td>Deserción interanual primaria (2023→2024)</td><td className="text-right">—</td><td className="text-right">—</td><td className="text-right">—</td><td className="text-right tabular-nums">{pct(n('desercion_prim_23_24'))}</td><td className="text-right">—</td></tr>
+              <tr><td>Atraso escolar primaria</td><td className="text-right">—</td><td className="text-right">—</td><td className="text-right">—</td><td className="text-right">—</td><td className="text-right tabular-nums">{pct(n('atraso_prim_2025'))}</td></tr>
+            </tbody></Tabla>
+            <p className="mt-1 text-xs text-ink2">UMC-MINEDU (ECE 2016, 2018, 2019; ENLA 2024) y ESCALE-SIAGIE. ENLA 2023 y 2025 fueron muestrales (sin distrito); 2.º de secundaria no se evaluó en 2024.</p>
           </Panel>
         </div>
         <aside className="space-y-4">
@@ -115,7 +137,8 @@ function Perfil({ d, nac, refs }: { d: Distrito; nac: Record<string, number | nu
           <Panel>
             <h3 className="font-medium mb-2">Lo que falta aquí</h3>
             <ul className="text-sm space-y-1.5">
-              {!d.cob.agua && <li><Evidencia n="D" /> Análisis de metales en agua superficial o de consumo (INGEMMET solo tiene 54 puntos en el país; ANA/DIGESA no publican microdato abierto).</li>}
+              {!d.oefa_agua_n && <li><Evidencia n="D" /> Análisis de metales en agua superficial (OEFA no ha muestreado aquí; ANA no publica valores).</li>}
+              <li><Evidencia n="D" /> Calidad del agua de consumo humano por sistema de abastecimiento (DIGESA/DIRESA: sin dato abierto).</li>
               <li><Evidencia n="D" /> Biomarcadores de exposición (plomo, mercurio o arsénico en sangre/orina): no hay serie pública por distrito.</li>
               <li><Evidencia n="D" /> Morbilidad ambulatoria por diagnóstico (HIS-MINSA) por distrito: pendiente de integrar.</li>
               <li><Evidencia n="D" /> Anemia y desnutrición infantil (SIEN): pendiente de integrar.</li>

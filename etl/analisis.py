@@ -19,6 +19,12 @@ df["log_sed_as_med"] = np.log10(df["sed_as_med"].where(df["sed_as_med"] > 0))
 df["log_sed_hg_med"] = np.log10(df["sed_hg_med"].where(df["sed_hg_med"] > 0))
 df["log_sed_pb_med"] = np.log10(df["sed_pb_med"].where(df["sed_pb_med"] > 0))
 df["log_sed_cd_med"] = np.log10(df["sed_cd_med"].where(df["sed_cd_med"] > 0))
+df["log_min_ilegal_ha"] = np.log10(df["min_ilegal_ha"].fillna(0) + 1) if "min_ilegal_ha" in df else np.nan
+df["log_min_informal_ha"] = np.log10(df["min_informal_ha"].fillna(0) + 1) if "min_informal_ha" in df else np.nan
+df["emerg_por_10k"] = df["emerg_n"].fillna(0) / df["pob"] * 1e4 if "emerg_n" in df else np.nan
+for c in ("oefa_as_pct_a1", "oefa_hg_pct_a1", "oefa_pb_pct_a1"):
+    if c not in df: df[c] = np.nan
+df["delta_enla_lec_16_24"] = df["enla_lec_sat"] - df["ece16_4p_lec_sat"] if "ece16_4p_lec_sat" in df else np.nan
 # Distritos con ≥3 muestras de sedimento para la mediana (evita medianas de n=1)
 for el in ("as", "hg", "pb", "cd"):
     df.loc[df[f"sed_{el}_n"].fillna(0) < 3, [f"log_sed_{el}_med", f"sed_{el}_med", f"sed_{el}_pct_pel"]] = np.nan
@@ -32,6 +38,12 @@ AMB = {
     "reinfo_vig_por_10k": {"label": "REINFO vigentes por 10 mil hab.", "fuente": "MINEM", "tipo": "minería en formalización"},
     "pam_por_10k": {"label": "Pasivos ambientales mineros por 10 mil hab.", "fuente": "MINEM Inventario PAM", "tipo": "minería histórica"},
     "um_n": {"label": "Unidades mineras formales (n)", "fuente": "MINEM/OSINERGMIN", "tipo": "minería formal"},
+    "log_min_ilegal_ha": {"label": "Área de minería ilegal (log10 ha+1)", "fuente": "OEFA PIFA (UFAFEMA/GORE/REINFO excluido)", "tipo": "minería ilegal documentada"},
+    "log_min_informal_ha": {"label": "Área de minería informal (log10 ha+1)", "fuente": "OEFA PIFA (REINFO)", "tipo": "minería informal"},
+    "emerg_por_10k": {"label": "Emergencias ambientales OEFA por 10 mil hab.", "fuente": "OEFA ODES", "tipo": "derrames y emergencias"},
+    "oefa_as_pct_a1": {"label": "% muestras de agua con As > ECA A1 (0,01 mg/L)", "fuente": "OEFA monitoreo agua superficial 2014–2026", "tipo": "calidad de agua superficial medida"},
+    "oefa_hg_pct_a1": {"label": "% muestras de agua con Hg > ECA A1 (0,001 mg/L)", "fuente": "OEFA", "tipo": "calidad de agua superficial medida"},
+    "oefa_pb_pct_a1": {"label": "% muestras de agua con Pb > ECA A1 (0,01 mg/L)", "fuente": "OEFA", "tipo": "calidad de agua superficial medida"},
 }
 RES = {
     "enla_lec_sat": {"label": "ENLA 2024 lectura: % satisfactorio (4º prim.)", "fuente": "UMC-MINEDU", "dominio": "educación"},
@@ -46,6 +58,11 @@ RES = {
     "tasa_neuro": {"label": "Mortalidad enf. sistema nervioso (G) por 100 mil", "fuente": "SINADEF", "dominio": "salud"},
     "tasa_perinatal_congenita": {"label": "Mortalidad perinatal/congénita (P,Q) por 100 mil", "fuente": "SINADEF", "dominio": "salud"},
     "tasa_total": {"label": "Mortalidad total registrada por 100 mil", "fuente": "SINADEF", "dominio": "salud"},
+    "ece19_2s_lec_sat": {"label": "ECE 2019 lectura 2.º sec.: % satisfactorio", "fuente": "UMC-MINEDU", "dominio": "educación"},
+    "ece19_2s_mat_sat": {"label": "ECE 2019 matemática 2.º sec.: % satisfactorio", "fuente": "UMC-MINEDU", "dominio": "educación"},
+    "desercion_prim_23_24": {"label": "Deserción interanual primaria 2023→2024 (%)", "fuente": "ESCALE-SIAGIE", "dominio": "educación"},
+    "atraso_prim_2025": {"label": "Atraso escolar primaria 2025 (%)", "fuente": "ESCALE-SIAGIE", "dominio": "educación"},
+    "delta_enla_lec_16_24": {"label": "Cambio en % satisfactorio lectura 4.º prim. 2016→2024 (pp)", "fuente": "UMC (ECE 2016, ENLA 2024)", "dominio": "educación"},
 }
 CTRL = ["pobreza", "altitud", "log_pob", "agua_red", "internet"]
 CTRL_LABEL = {"pobreza": "pobreza monetaria (%)", "altitud": "altitud (m)", "log_pob": "log población", "agua_red": "% viviendas con agua de red", "internet": "% hogares con internet"}

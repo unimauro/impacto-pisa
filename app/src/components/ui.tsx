@@ -10,7 +10,7 @@ export const NIVEL: Record<Nivel, { t: string; d: string; cls: string }> = {
   D: { t: 'Sin datos', d: 'No hay medición pública para este territorio o variable. Ausencia de dato ≠ ausencia de problema.', cls: 'bg-ink3/10 text-ink2 border-line' },
 }
 export function Evidencia({ n, children }: { n: Nivel; children?: ReactNode }) {
-  return <span title={NIVEL[n].d} className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium ${NIVEL[n].cls}`}><span className="font-display text-sm leading-none">{n}</span>{children ?? NIVEL[n].t}</span>
+  return <span title={NIVEL[n].d} className={`inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-xs font-medium ${NIVEL[n].cls}`}><span className="font-display text-sm leading-none">{n}</span>{children ?? NIVEL[n].t}</span>
 }
 export function Titulo({ children, sub }: { children: ReactNode; sub?: ReactNode }) {
   return <div className="mb-6 max-w-3xl"><h1 className="text-3xl md:text-4xl font-medium leading-tight">{children}</h1>{sub && <p className="mt-2 text-ink2 leading-relaxed">{sub}</p>}</div>

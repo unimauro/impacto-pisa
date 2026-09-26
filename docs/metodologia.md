@@ -41,3 +41,10 @@ Modelos espaciales (Moran's I, SAR/SEM), estandarización por edad, series tempo
 
 ## 9. Reproducibilidad
 Ver README. Semillas fijas; salidas JSON versionadas; pruebas `tests/test_datos.py`; ETL mensual en GitHub Actions (`.github/workflows/etl.yml`).
+
+## 10. Adenda (25-sep-2026, segunda iteración)
+- **OEFA agua superficial** (`etl/oefa_agua.py`): 714 mil filas → 75 273 análisis de As/Hg/Pb/Cd en agua superficial; UTM zonas 17/18/19 S → WGS84 (pyproj); valor = primera columna de método no vacía (totales antes que disueltos); µg/L → mg/L; `<` = bajo LD (cuenta como cumple). Por distrito: n, % > ECA A1 y % > cat. 3, máximo. Muestreo dirigido: no es representativo del distrito.
+- **OEFA emergencias** (ODES): conteo por distrito (punto-en-polígono; 3 646 de 3 930 asignadas, el resto sin coordenada válida). **Minería ilegal/informal**: área geodésica de la intersección polígono × distrito (ha).
+- **Educación**: ECE 2016 y 2018 4.º primaria (misma serie que ENLA 2024 según UMC) → cambio 2016→2024; ECE 2019 2.º secundaria (último distrital); ESCALE-SIAGIE deserción interanual primaria 2023→2024 y atraso 2025.
+- **Casos**: solo cifras con URL abierta en nivel A; lo de prensa en B/C; lo no encontrado en D. Puerto Almendra se presenta como hipótesis no respaldada (de Meyer 2023) y no como caso de arsénico.
+- Análisis ampliado a 255 pares; ninguna correlación parcial supera |r| = 0,2.

@@ -3,7 +3,7 @@ import json, os, re, math
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, "..", "app", "public", "data")
 def _bad(c): raise ValueError(f"constante no válida en JSON: {c}")
 def load(n): return json.load(open(os.path.join(OUT, n)), parse_constant=_bad)  # rechaza NaN/Infinity (JSON inválido en navegador)
-D = load("distritos.json"); A = load("analisis.json"); R = load("resumen.json"); C = load("catalogo.json")
+D = load("distritos.json"); OA = load("oefa-agua-puntos.json"); A = load("analisis.json"); R = load("resumen.json"); C = load("catalogo.json")
 
 def test_ubigeo_integridad():
     assert all(re.fullmatch(r"\d{6}", d["ubigeo"]) for d in D)
@@ -50,3 +50,30 @@ def test_sin_datos_personales():
     txt = json.dumps(D, ensure_ascii=False)
     assert not re.search(r"\b\d{8}\b", txt) or True  # no DNI en salidas (los conteos no son DNI); verificación de campos:
     for d in D: assert not any(k.lower() in ("dni", "nombre", "apellido") for k in d)
+
+def test_capas_nuevas_oefa_y_educacion():
+    for d in D:
+        for k in ("min_ilegal_ha", "min_informal_ha"):
+            if d.get(k) is not None: assert 0 <= d[k] <= 500000, (d["ubigeo"], k)
+        for el in ("as", "hg", "pb", "cd"):
+            p = d.get(f"oefa_{el}_pct_a1")
+            if p is not None: assert 0 <= p <= 100 and d.get(f"oefa_{el}_n", 0) > 0
+        for k in ("desercion_prim_23_24", "atraso_prim_2025", "ece16_4p_lec_sat", "ece19_2s_lec_sat"):
+            v = d.get(k)
+            if v is not None: assert 0 <= v <= 100, (d["ubigeo"], k, v)
+        assert d["emerg_n"] >= d["emerg_hc_n"] + d["emerg_min_n"]
+    assert sum(d["emerg_n"] for d in D) == R["emergencias"]["asignadas"]
+def test_casos_verificables():
+    C2 = load("casos.json"); assert len(C2) == 4
+    ids = {d["ubigeo"] for d in D}
+    for c in C2:
+        assert c["ubigeos"] and all(u in ids for u in c["ubigeos"]), c["id"]
+        for h in c["hallazgos"]:
+            assert h["nivel"] in "ABCD"
+            if h["nivel"] == "A": assert h.get("url", "").startswith("http"), (c["id"], h["texto"][:40])
+        for m in c.get("mediciones", []): assert m.get("url", "").startswith("http"), (c["id"], m["que"])
+
+def test_oefa_puntos_json_estricto():
+    assert OA["n_muestras"] > 50000 and len(OA["puntos"]) > 40000
+    for p in OA["puntos"][:2000]:
+        assert p[2] in ("as", "hg", "pb", "cd") and p[3] >= 0 and p[6] <= p[5] and (p[8] is None or len(p[8]) == 6)

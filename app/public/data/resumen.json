@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-25T15:59:01",
+ "generado": "2026-09-25T20:31:31",
  "n_distritos": 1826,
  "cobertura": {
   "edu": 1566,
@@ -9,6 +9,9 @@
   "salud": 1789,
   "socio": 1824,
   "gasto": 1824,
+  "oefa_agua": 498,
+  "ece16": 1662,
+  "desercion": 1824,
   "agua": 23
  },
  "sedimentos": {
@@ -20,6 +23,16 @@
  },
  "pam": {
   "n": 6122
+ },
+ "emergencias": {
+  "n": 3930,
+  "asignadas": 3646
+ },
+ "mineria_ilegal_ha": 77120,
+ "mineria_informal_ha": 911379,
+ "oefa_agua": {
+  "muestras": 75061,
+  "distritos": 498
  },
  "reinfo": {
   "n": 87334,

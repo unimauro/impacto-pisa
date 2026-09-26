@@ -1,0 +1,192 @@
+[
+  {
+    "id": "puerto-almendra",
+    "titulo": "Puerto Almendra: ¿arsénico en el agua de pozo?",
+    "lugar": "Puerto Almendra, distrito San Juan Bautista, provincia Maynas, Loreto (margen derecha del río Nanay, ~21 km al SO de Iquitos)",
+    "pregunta": "¿Hay evidencia de arsénico u otros contaminantes geogénicos en el agua que consume la comunidad de Puerto Almendra?",
+    "resumen": "No existe ninguna medición publicada de agua en Puerto Almendra. Los estudios regionales de Eawag (de Meyer et al. 2017 y 2023) documentan arsénico geogénico alto en pozos de llanuras de inundación de ríos ricos en sedimento (Amazonas, Ucayali) y aluminio alto en arenas ácidas alrededor de Iquitos, pero no hallaron pozos con más de 5 µg/L de arsénico en riberas de ríos pobres en sedimento como el Nanay. La hipótesis de arsénico en Puerto Almendra no está respaldada por la evidencia disponible; los riesgos plausibles son aluminio/acidez del agua y mercurio en pescado por la minería ilegal aguas arriba en la cuenca del Nanay.",
+    "hallazgos": [
+      {"nivel": "A", "texto": "En acuíferos aluviales holocenos junto a los grandes tributarios amazónicos (regiones de Iquitos y Pucallpa) el arsénico alcanza hasta 700 µg/L y el manganeso hasta 4 mg/L; alrededor de Iquitos, las aguas ácidas (pH 4.2-5.5) de acuíferos de arena pura tienen aluminio hasta 3.3 mg/L.", "fuente": "de Meyer CMC, Rodríguez JM, Carpio EA, García PA, Stengel C, Berg M. Sci Total Environ 2017;607-608 (DOI 10.1016/j.scitotenv.2017.07.059)", "url": "https://pubmed.ncbi.nlm.nih.gov/28763940/"},
+      {"nivel": "A", "texto": "En la cuenca amazónica (Perú y Brasil), 70 % de los pozos de la llanura dominada por canales y 20 % de la llanura menos dinámica superan 10 µg/L de arsénico (máximo 430 µg/L). Ningún pozo fuera de la llanura de inundación de ríos ricos en sedimento, ni en riberas de ríos pobres en sedimento, superó 5 µg/L.", "fuente": "de Meyer CMC, Wahnfried I, Rodríguez JM, Kipfer R, García PA, Carpio EA, Berg M. Sci Total Environ 2023;860:160407", "url": "https://www.sciencedirect.com/science/article/pii/S004896972207509X"},
+      {"nivel": "A", "texto": "En seis comunidades de los ríos Nanay y Pintuyacu (2024), 79 % de 273 personas superó el valor de referencia de la OMS de 2.2 mg/kg de mercurio en cabello; 37 % estuvo por encima de 10 mg/kg; niños de 0-4 años tuvieron mediana de 12.99 mg/kg.", "fuente": "CINCIA y Sociedad Zoológica de Fráncfort Perú, reportado por Mongabay Latam (jun-2025)", "url": "https://es.mongabay.com/2025/06/amenaza-mercurio-comunidades-indigenas-loreto-presenta-niveles-altos/"},
+      {"nivel": "A", "texto": "El CIEFOR-UNAP (Facultad de Ciencias Forestales) opera en Puerto Almendra desde 2001; el centro está a 3°49'40\" S, 73°22'30\" O, ~122 msnm, margen derecha del Nanay.", "fuente": "Tesis Facultad de Ciencias Forestales, UNAP (repositorio institucional)", "url": "https://api-repositorio.unapiquitos.edu.pe/server/api/core/bitstreams/00d4eb41-1a1d-436e-9479-b44141c8cfe4/content"},
+      {"nivel": "C", "texto": "Por su ubicación en la ribera del Nanay (río de aguas negras, pobre en sedimento), el patrón regional predice arsénico bajo en pozos de Puerto Almendra; el riesgo más plausible es aluminio y acidez en acuíferos arenosos, como en el resto del entorno de Iquitos.", "fuente": "Inferencia a partir de de Meyer et al. 2017 y 2023", "url": "https://www.dora.lib4ri.ch/eawag/dload/eawag:26216/PDF/de_Meyer-2022-Hotspots_of_geogenic_arsenic_and-(published_version).pdf"},
+      {"nivel": "D", "texto": "No existe ninguna medición publicada de arsénico, aluminio o mercurio en agua o en personas de Puerto Almendra (búsquedas en repositorio UNAP, INS, DIRESA Loreto, SciELO y Google Scholar).", "fuente": "Búsqueda propia, sep-2026", "url": ""},
+      {"nivel": "D", "texto": "No se encontró la población del centro poblado Puerto Almendra; el distrito San Juan Bautista tenía 127,005 habitantes en el censo 2017 y Puerto Almendra es uno de sus 94 centros poblados.", "fuente": "INEI Censos Nacionales 2017 (cuadro de centros poblados no consultado)", "url": "https://censo2017.inei.gob.pe/resultados-definitivos-de-los-censos-nacionales-2017/"},
+      {"nivel": "D", "texto": "No se encontró ningún proyecto de planta de tratamiento de agua para Puerto Almendra. Los proyectos documentados son metropolitanos: renovación de la PTAP de Sedaloreto (más de S/ 48 millones) y el proyecto Grandes Ciudades Iquitos (S/ 863 millones, 371,852 beneficiarios en Iquitos, Belén, San Juan Bautista y Punchana).", "fuente": "Ministerio de Vivienda / Perú Construye", "url": "https://www.gob.pe/institucion/vivienda/noticias/1003434-iquitos-forma-parte-de-proyecto-grandes-ciudades-ministerio-de-vivienda-informa-alcances-de-megaobra-de-agua-potable-y-saneamiento"}
+    ],
+    "mediciones": [
+      {"que": "Arsénico máximo en pozos de acuíferos aluviales holocenos, regiones Iquitos y Pucallpa", "valor": "hasta 700 µg/L", "referencia": "OMS 10 µg/L", "fuente": "de Meyer et al. 2017", "url": "https://pubmed.ncbi.nlm.nih.gov/28763940/", "anio": 2017},
+      {"que": "Aluminio disuelto en pozos de arena ácida alrededor de Iquitos", "valor": "hasta 3.3 mg/L (pH 4.2-5.5)", "referencia": "OMS valor orientativo ~0.9 mg/L (salud) / 0.2 mg/L (estético)", "fuente": "de Meyer et al. 2017", "url": "https://pubmed.ncbi.nlm.nih.gov/28763940/", "anio": 2017},
+      {"que": "Pozos que superan 10 µg/L de As en la llanura de canales de ríos ricos en sedimento (cuenca amazónica)", "valor": "70 % (máx. 430 µg/L)", "referencia": "OMS 10 µg/L", "fuente": "de Meyer et al. 2023", "url": "https://www.sciencedirect.com/science/article/pii/S004896972207509X", "anio": 2023},
+      {"que": "Pozos que superan 5 µg/L de As fuera de llanuras de ríos ricos en sedimento o en riberas de ríos pobres en sedimento", "valor": "0 %", "referencia": "OMS 10 µg/L", "fuente": "de Meyer et al. 2023", "url": "https://www.sciencedirect.com/science/article/pii/S004896972207509X", "anio": 2023},
+      {"que": "Personas con mercurio en cabello > 2.2 mg/kg en 6 comunidades del Nanay-Pintuyacu (n=273)", "valor": "79 %", "referencia": "OMS 2.2 mg/kg", "fuente": "CINCIA/FZS vía Mongabay", "url": "https://es.mongabay.com/2025/06/amenaza-mercurio-comunidades-indigenas-loreto-presenta-niveles-altos/", "anio": 2024}
+    ],
+    "faltantes": [
+      "Medición de arsénico, aluminio, manganeso y pH en los pozos o fuentes de agua de Puerto Almendra",
+      "Población y número de viviendas del centro poblado (cuadro de centros poblados, censo 2017 INEI)",
+      "Fuente actual de agua de la comunidad (pozo, río, sistema UNAP) y existencia de algún sistema de tratamiento",
+      "Localización de los 28 hogares y 3 plantas comunitarias del estudio de filtros de ETH Zürich (Bolisetty et al. 2021), que no nombra las regiones en el resumen",
+      "Biomarcadores (Hg en cabello, As en orina) en residentes de Puerto Almendra"
+    ],
+    "siguientes": [
+      "Solicitar a Eawag/de Meyer o a la UNAP los puntos de muestreo de 2017 cerca de Iquitos para ver si alguno está en el Nanay",
+      "Pedir a DIRESA Loreto (DESA) los resultados de vigilancia de calidad de agua del distrito San Juan Bautista",
+      "Extraer del censo 2017 (tomo Loreto, centros poblados) la población de Puerto Almendra",
+      "Reformular el caso como 'aluminio/acidez y mercurio en el Nanay' salvo que aparezca un dato propio de arsénico"
+    ],
+    "referencias": [
+      {"titulo": "Arsenic, manganese and aluminum contamination in groundwater resources of Western Amazonia (Peru)", "url": "https://pubmed.ncbi.nlm.nih.gov/28763940/", "anio": 2017},
+      {"titulo": "Hotspots of geogenic arsenic and manganese contamination in groundwater of the floodplains in lowland Amazonia (South America)", "url": "https://www.sciencedirect.com/science/article/pii/S004896972207509X", "anio": 2023},
+      {"titulo": "PDF libre (Eawag DORA) del estudio de 2023", "url": "https://www.dora.lib4ri.ch/eawag/dload/eawag:26216/PDF/de_Meyer-2022-Hotspots_of_geogenic_arsenic_and-(published_version).pdf", "anio": 2022},
+      {"titulo": "Toxic levels of arsenic in Amazon basin well water: study (phys.org, EGU 2018)", "url": "https://phys.org/news/2018-04-toxic-arsenic-amazon-basin.html", "anio": 2018},
+      {"titulo": "La amenaza del mercurio: el 79 % de la población de seis comunidades nativas de Loreto presenta niveles por encima de los límites (Mongabay)", "url": "https://es.mongabay.com/2025/06/amenaza-mercurio-comunidades-indigenas-loreto-presenta-niveles-altos/", "anio": 2025},
+      {"titulo": "Arsenic removal from Peruvian drinking water using milk protein nanofibril–carbon filters: a field study", "url": "https://pubs.rsc.org/en/content/articlelanding/2021/ew/d1ew00456e", "anio": 2021},
+      {"titulo": "Iquitos forma parte del proyecto Grandes Ciudades (MVCS)", "url": "https://www.gob.pe/institucion/vivienda/noticias/1003434-iquitos-forma-parte-de-proyecto-grandes-ciudades-ministerio-de-vivienda-informa-alcances-de-megaobra-de-agua-potable-y-saneamiento", "anio": 2025}
+    ]
+  },
+  {
+    "id": "nazca",
+    "titulo": "Nazca: plantas de beneficio, mercurio y cianuro sin vigilancia sanitaria",
+    "lugar": "Provincia de Nasca, Ica (distritos Vista Alegre, El Ingenio, Nasca, Changuillo, Marcona)",
+    "pregunta": "¿Cuánta minería artesanal y cuántas plantas de beneficio operan en Nasca, y existe alguna medición de mercurio o cianuro en ambiente o en personas?",
+    "resumen": "Nasca es uno de los polos de plantas de beneficio informales de la costa sur: el catastro de INGEMMET registra 20 plantas en la provincia y la observación satelital muestra plantas no registradas al sur de la ciudad. En 2025 y 2026 hubo un megaoperativo de SUNAT en Vista Alegre y El Ingenio y protestas de agricultores por relaves con cianuro junto al río. Sin embargo, no existe ningún estudio publicado de mercurio en aire, suelo, agua o biomarcadores en la provincia, y la vigilancia del CDC de expuestos a metales pesados no registra ningún caso en Ica. La provincia sí tiene la mayor prevalencia de anemia infantil y gestante de la región Ica.",
+    "hallazgos": [
+      {"nivel": "A", "texto": "El catastro de INGEMMET registra 20 plantas de beneficio en la provincia de Nasca y 28 en Caravelí (63 en el nodo costa andina sur). Imágenes satelitales muestran plantas al sur de la ciudad de Nasca que no figuran en el registro oficial.", "fuente": "CooperAcción, Las plantas de beneficio, el eslabón invisible en la cadena de la MAPE (2025)", "url": "https://cooperaccion.org.pe/wp-content/uploads/2025/09/plantas-de-beneficio-mape.pdf"},
+      {"nivel": "A", "texto": "Megaoperativo de SUNAT, PNP (Dirmeamb, Dirandro) y FEMA del 29 de mayo de 2025 en Vista Alegre y El Ingenio: 10 plantas intervenidas y 302 toneladas incautadas (70 t de óxido de calcio, 41 t de hidróxido de calcio, 188 t de mineral de cobre, 50 kg de soda cáustica). No se reporta mercurio.", "fuente": "Infobae Perú", "url": "https://www.infobae.com/peru/2025/05/30/incautan-mas-de-300-toneladas-de-insumos-y-minerales-en-megaoperativo-contra-mineria-ilegal-en-nasca/"},
+      {"nivel": "A", "texto": "El 23 de abril de 2026 agricultores del valle de Tierras Blancas (km 13 de la vía Nasca-Puquio) protestaron contra la planta informal 'El Olivar Imperial' por relaves con cianuro a 100 m del río; se estima 1,800 agricultores en riesgo; intervinieron DREM Ica y la Fiscalía Ambiental.", "fuente": "Diario Correo, edición Ica", "url": "https://diariocorreo.pe/edicion/ica/nasca-agricultores-protestan-contra-planta-de-mineria-informal-que-danaria-cultivos-noticia/"},
+      {"nivel": "A", "texto": "A la semana epidemiológica 12 de 2025 la vigilancia del CDC registró 1,097 personas expuestas a metales pesados en 33 distritos del país; el departamento de Ica no aparece con ninguna notificación.", "fuente": "CDC-MINSA, Sala situacional de metales pesados SE 12-2025", "url": "https://www.dge.gob.pe/portal/docs/vigilancia/sala/2025/SE12/metales.pdf"},
+      {"nivel": "A", "texto": "En 2024, en IPRESS de la DIRESA Ica, la provincia de Nasca tuvo la mayor proporción de niños con anemia (1,351 de 6,979 evaluados, 19.4 %, frente a 9.5 % regional) y de gestantes con anemia (217 de 1,034, 21.0 %).", "fuente": "UNICEF / DIRESA Ica, Análisis situacional de la anemia en Ica (jul-2025)", "url": "https://www.unicef.org/peru/media/20316/file/An%C3%A1lisis%20situacional%20de%20la%20anemia%20en%20Ica_Versi%C3%B3n%20final%20julio%202025.pdf.pdf"},
+      {"nivel": "C", "texto": "El uso de mercurio en quimbaletes y el refogueo de amalgama en Tulín y Saramarca (Palpa-Nasca) están descritos desde 2001; es plausible que persistan, pero no hay medición reciente.", "fuente": "Kuramoto J. La minería artesanal e informal en el Perú (GRADE/IIED, 2001)", "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/3AE3C036E9E73AE905257A52006C0DD2/$FILE/mineria-artesanal-e-informal-en-e-peru.pdf"},
+      {"nivel": "C", "texto": "En Secocha (Arequipa, misma franja metalogenética Nazca-Ocoña) se midió mercurio en suelo de 86.11 mg/kg en la zona de procesamiento más antigua, 43.81 mg/kg en la más reciente y 9.53 mg/kg en la zona urbana; sugiere lo que podría hallarse en Nasca, pero no es Nasca.", "fuente": "Soil and Urine Mercury Levels in Secocha (Mining 2024;4(2):22), cifras de resumen no verificadas en el texto completo", "url": "https://www.mdpi.com/2673-6489/4/2/22"},
+      {"nivel": "D", "texto": "No existe ningún estudio de mercurio en aire, suelo, agua, sangre, orina o cabello en la provincia de Nasca (búsquedas en SciELO, PubMed, Europe PMC, repositorios y prensa).", "fuente": "Búsqueda propia, sep-2026", "url": ""},
+      {"nivel": "D", "texto": "Resultados ENLA 2024 de la UGEL Nasca: existen reportes por UGEL en el sitio de la UMC y en SICRECE, pero no se extrajeron las cifras.", "fuente": "UMC-Minedu, Resultados ENLA 2024", "url": "http://umc.minedu.gob.pe/resultadosenla2024/"}
+    ],
+    "mediciones": [
+      {"que": "Plantas de beneficio registradas en INGEMMET, provincia de Nasca", "valor": "20", "referencia": "63 en el nodo costa andina sur (Nasca + Caravelí + Lucanas + Parinacochas)", "fuente": "CooperAcción 2025", "url": "https://cooperaccion.org.pe/wp-content/uploads/2025/09/plantas-de-beneficio-mape.pdf", "anio": 2025},
+      {"que": "Plantas intervenidas y toneladas incautadas en megaoperativo SUNAT (Vista Alegre y El Ingenio)", "valor": "10 plantas; 302 t", "referencia": "—", "fuente": "Infobae", "url": "https://www.infobae.com/peru/2025/05/30/incautan-mas-de-300-toneladas-de-insumos-y-minerales-en-megaoperativo-contra-mineria-ilegal-en-nasca/", "anio": 2025},
+      {"que": "Anemia en niños evaluados en IPRESS, provincia de Nasca (2024)", "valor": "19.4 % (1,351/6,979)", "referencia": "DIRESA Ica 9.5 %", "fuente": "UNICEF/DIRESA Ica", "url": "https://www.unicef.org/peru/media/20316/file/An%C3%A1lisis%20situacional%20de%20la%20anemia%20en%20Ica_Versi%C3%B3n%20final%20julio%202025.pdf.pdf", "anio": 2024},
+      {"que": "Anemia en gestantes, provincia de Nasca (2024)", "valor": "21.0 % (217/1,034)", "referencia": "mayor de la región Ica", "fuente": "UNICEF/DIRESA Ica", "url": "https://www.unicef.org/peru/media/20316/file/An%C3%A1lisis%20situacional%20de%20la%20anemia%20en%20Ica_Versi%C3%B3n%20final%20julio%202025.pdf.pdf", "anio": 2024},
+      {"que": "Personas expuestas a metales pesados notificadas en Ica (vigilancia CDC, SE 12-2025)", "valor": "0", "referencia": "1,097 a nivel nacional", "fuente": "CDC-MINSA", "url": "https://www.dge.gob.pe/portal/docs/vigilancia/sala/2025/SE12/metales.pdf", "anio": 2025}
+    ],
+    "faltantes": [
+      "Mercurio en aire (GEM) cerca de quimbaletes y plantas en Vista Alegre y El Ingenio",
+      "Mercurio y cianuro en suelo, relaves y agua del río Grande/Nasca y Tierras Blancas",
+      "Biomarcadores (Hg en orina/cabello, Pb en sangre) en trabajadores y niños de Nasca",
+      "Listado de plantas de beneficio con distrito y capacidad del directorio MINEM (la página dinámica no se pudo leer)",
+      "Informes de supervisión OEFA/DREM Ica a plantas de Nasca",
+      "Cifras ENLA 2024 de la UGEL Nasca (lectura y matemática, 4.° de primaria)"
+    ],
+    "siguientes": [
+      "Descargar el reporte ENLA 2024 de la UGEL Nasca desde la UMC (seleccionar DRE Ica) o SICRECE",
+      "Solicitar por acceso a la información a OEFA y DREM Ica las fiscalizaciones a plantas de beneficio en Nasca 2023-2026",
+      "Pedir a CENSOPAS/INS si existe dosaje de metales en Nasca o Marcona",
+      "Raspar el tablero CDC (app7.dge.gob.pe/maps/sala_emp) para confirmar cero notificaciones en Ica 2020-2026",
+      "Cruzar el catastro INGEMMET (GEOCATMIN) con imágenes satelitales para contar plantas por distrito"
+    ],
+    "referencias": [
+      {"titulo": "Las plantas de beneficio, el eslabón invisible en la cadena de la MAPE (CooperAcción)", "url": "https://cooperaccion.org.pe/wp-content/uploads/2025/09/plantas-de-beneficio-mape.pdf", "anio": 2025},
+      {"titulo": "Incautan más de 300 toneladas de insumos y minerales en megaoperativo contra minería ilegal en Nasca (Infobae)", "url": "https://www.infobae.com/peru/2025/05/30/incautan-mas-de-300-toneladas-de-insumos-y-minerales-en-megaoperativo-contra-mineria-ilegal-en-nasca/", "anio": 2025},
+      {"titulo": "Nasca: agricultores protestan contra planta de minería informal que dañaría cultivos (Correo)", "url": "https://diariocorreo.pe/edicion/ica/nasca-agricultores-protestan-contra-planta-de-mineria-informal-que-danaria-cultivos-noticia/", "anio": 2026},
+      {"titulo": "Análisis situacional de la anemia en Ica (UNICEF/DIRESA Ica)", "url": "https://www.unicef.org/peru/media/20316/file/An%C3%A1lisis%20situacional%20de%20la%20anemia%20en%20Ica_Versi%C3%B3n%20final%20julio%202025.pdf.pdf", "anio": 2025},
+      {"titulo": "Sala situacional de vigilancia de metales pesados y metaloides, SE 12-2025 (CDC-MINSA)", "url": "https://www.dge.gob.pe/portal/docs/vigilancia/sala/2025/SE12/metales.pdf", "anio": 2025},
+      {"titulo": "La minería artesanal e informal en el Perú (Kuramoto, GRADE/IIED)", "url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/3AE3C036E9E73AE905257A52006C0DD2/$FILE/mineria-artesanal-e-informal-en-e-peru.pdf", "anio": 2001},
+      {"titulo": "Soil and Urine Mercury Levels in Secocha: A Case Study of ASGM in Peru (Mining)", "url": "https://www.mdpi.com/2673-6489/4/2/22", "anio": 2024},
+      {"titulo": "Resultados ENLA 2024 (UMC-Minedu)", "url": "http://umc.minedu.gob.pe/resultadosenla2024/", "anio": 2025}
+    ]
+  },
+  {
+    "id": "puno",
+    "titulo": "Puno: arsénico geogénico en el agua subterránea del altiplano",
+    "lugar": "Juliaca (San Román), Desaguadero (Chucuito), Huata y Carancas, Puno",
+    "pregunta": "¿Qué concentraciones de arsénico se han medido en pozos del altiplano de Puno y qué se sabe de la exposición humana?",
+    "resumen": "Varios estudios universitarios documentan arsénico geogénico en pozos del altiplano puneño muy por encima de los 10 µg/L de la OMS: 3 a 446 µg/L en 32 pozos de la cuenca del Callacame (Desaguadero), 100 % de 28 puntos por encima de 10 µg/L en dos urbanizaciones de Juliaca, y hasta 500 µg/L citados para Huata y Carancas. El origen es volcánico y sedimentario, con mineralización de sulfuros. No se encontró ningún estudio de biomarcadores (arsénico en orina) en población de Puno; los únicos biomarcadores peruanos de arsénico son de Tacna y Junín.",
+    "hallazgos": [
+      {"nivel": "A", "texto": "En 32 pozos de la cuenca del río Callacame (Desaguadero, 3,820-3,850 msnm) muestreados en 2015, 2016 y 2018, el arsénico fue de 3 a 446 µg/L con media de 64 µg/L; 4 de 32 puntos superaron 100 µg/L (ECA); suelos 10-42.7 mg/kg.", "fuente": "Calcina-Benique ME, Calcina-Rondán LE, Huaraya-Chambi FR, Salas-Camargo AR, Tejada-Meza K. DYNA 2022;89(221):178-184", "url": "https://www.redalyc.org/journal/496/49672735020/html/"},
+      {"nivel": "A", "texto": "En Huacullane, Huanocollo, Kelluyo y Cicuyani (Callacame) el arsénico en agua subterránea fue de 1.4 a 446 µg/L; el artículo atribuye el origen a rocas volcánicas ácidas y alteración hidrotermal con sulfuros de Ag-Pb-Zn, y cita para Huata y Carancas arsénico hasta 500 µg/L en pozos profundos con 96 % de muestras sobre 10 µg/L.", "fuente": "Calcina Benique M, Apaza Campos R. Revista de Ciencias Naturales UNA-Puno 2019;1(1):1-11", "url": "https://revistas.unap.edu.pe/rccnn/index.php/rccnn/article/download/248/257/615"},
+      {"nivel": "A", "texto": "En 28 puntos de agua subterránea de las urbanizaciones Santa Adriana y Niño San Salvador (Juliaca, 2019), el 100 % superó el límite de 0.010 mg/L de arsénico.", "fuente": "Apaza Quispe TL. Tesis, Universidad Peruana Unión, 2020", "url": "https://repositorio.upeu.edu.pe/items/4116b3e0-ff40-485a-ac0c-9198cddad39a"},
+      {"nivel": "A", "texto": "Dos pozos de la urbanización Taparachi (Juliaca, 2023) superaron 50 µg/L de arsénico.", "fuente": "Mestas Mora TN. Tesis, UPSC, 2023", "url": "https://repositorio.upsc.edu.pe/handle/UPSC/1278"},
+      {"nivel": "B", "texto": "En Perú, la exposición a arsénico por agua se asocia con niveles urinarios altos: en Cairani (Tacna, agua 680 µg/L) la mediana urinaria fue 601.6 µg/g de creatinina frente a 30.2 en Camilaca (agua 2 µg/L). Esta relación dosis-respuesta es la base para esperar exposición en Puno, pero no se ha medido allí.", "fuente": "Ale-Mauricio DA, Villa G, Gastañaga MC. Rev Peru Med Exp Salud Publica 2018;35(2)", "url": "http://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1726-46342018000200002"},
+      {"nivel": "C", "texto": "La corteza engrosada y el volcanismo del Altiplano-Puna explican concentraciones altas de arsénico en toda la región (Bolivia, Chile, Argentina y Perú); Juliaca y Desaguadero comparten esa geología.", "fuente": "Calcina Benique y Apaza Campos 2019 (discusión)", "url": "https://revistas.unap.edu.pe/rccnn/index.php/rccnn/article/download/248/257/615"},
+      {"nivel": "D", "texto": "No se encontró ningún estudio de arsénico en orina, uñas o cabello en población de Puno, ni datos abiertos de DIGESA/DIRESA Puno de calidad de agua de pozo por distrito.", "fuente": "Búsqueda propia, sep-2026", "url": ""},
+      {"nivel": "D", "texto": "La cifra de 451 µg/L en un pozo de Juliaca aparece en un artículo de remoción de arsénico que no se pudo abrir; queda sin verificar.", "fuente": "Revista Tecnología y Ciencias del Agua", "url": "https://revistatyca.org.mx/index.php/tyca/article/download/3777/2828/21379"}
+    ],
+    "mediciones": [
+      {"que": "Arsénico en 32 pozos, cuenca del Callacame (Desaguadero)", "valor": "3-446 µg/L, media 64 µg/L; 4/32 > 100 µg/L", "referencia": "OMS 10 µg/L; ECA Perú 100 µg/L (categoría agrícola citada)", "fuente": "Calcina-Benique et al. 2022", "url": "https://www.redalyc.org/journal/496/49672735020/html/", "anio": 2022},
+      {"que": "Arsénico en agua subterránea, sectores Huacullane, Huanocollo, Kelluyo, Cicuyani", "valor": "1.4-446 µg/L", "referencia": "OMS 10 µg/L", "fuente": "Calcina y Apaza 2019", "url": "https://revistas.unap.edu.pe/rccnn/index.php/rccnn/article/download/248/257/615", "anio": 2019},
+      {"que": "Arsénico en pozos profundos de Huata y Carancas (citado)", "valor": "hasta 500 µg/L; 96 % de muestras > 10 µg/L", "referencia": "OMS 10 µg/L", "fuente": "Apaza y Calcina 2014; EWB-USA 2012, citados en Calcina y Apaza 2019", "url": "https://revistas.unap.edu.pe/rccnn/index.php/rccnn/article/download/248/257/615", "anio": 2014},
+      {"que": "Puntos de agua subterránea sobre 10 µg/L As, urb. Santa Adriana y Niño San Salvador, Juliaca (n=28)", "valor": "100 %", "referencia": "LMP 0.010 mg/L", "fuente": "Apaza Quispe 2020 (tesis UPeU)", "url": "https://repositorio.upeu.edu.pe/items/4116b3e0-ff40-485a-ac0c-9198cddad39a", "anio": 2019},
+      {"que": "Arsénico en 2 pozos, urb. Taparachi, Juliaca", "valor": "> 50 µg/L en ambos", "referencia": "OMS 10 µg/L", "fuente": "Mestas Mora 2023 (tesis UPSC)", "url": "https://repositorio.upsc.edu.pe/handle/UPSC/1278", "anio": 2023}
+    ],
+    "faltantes": [
+      "Arsénico en orina en residentes de Juliaca y Desaguadero",
+      "Datos de vigilancia de calidad de agua (DIGESA/DIRESA Puno) por distrito y fuente",
+      "Número de personas que consumen agua de pozo en Juliaca (cobertura SEDA Juliaca vs pozos)",
+      "Concentraciones exactas (media, máximo) de las tesis de Juliaca, no incluidas en los resúmenes"
+    ],
+    "siguientes": [
+      "Abrir el texto completo de las tesis UPeU 2020 y UPSC 2023 para extraer concentraciones por pozo",
+      "Solicitar a DIRESA Puno (DESA) los monitoreos de arsénico en fuentes de agua de San Román y Chucuito",
+      "Verificar el artículo de Tecnología y Ciencias del Agua con el dato de 451 µg/L en Juliaca",
+      "Buscar en el repositorio INS/CENSOPAS dosajes de arsénico en Puno"
+    ],
+    "referencias": [
+      {"titulo": "Arsénico en aguas subterráneas de la cuenca del río Callacame y su impacto en suelos agrícolas en Desaguadero, Puno (DYNA)", "url": "https://www.redalyc.org/journal/496/49672735020/html/", "anio": 2022},
+      {"titulo": "Evaluación geoquímica del arsénico en aguas subterráneas de la subcuenca del río Callacame, Desaguadero Puno (Rev. Ciencias Naturales UNA)", "url": "https://revistas.unap.edu.pe/rccnn/index.php/rccnn/article/download/248/257/615", "anio": 2019},
+      {"titulo": "Evaluación de arsénico, dureza, coliformes termotolerantes y E. coli en aguas subterráneas de Santa Adriana y Niño San Salvador, Juliaca (tesis UPeU)", "url": "https://repositorio.upeu.edu.pe/items/4116b3e0-ff40-485a-ac0c-9198cddad39a", "anio": 2020},
+      {"titulo": "Determinación del nivel de concentración de arsénico en aguas subterráneas en la urbanización Taparachi, Juliaca (tesis UPSC)", "url": "https://repositorio.upsc.edu.pe/handle/UPSC/1278", "anio": 2023},
+      {"titulo": "Concentraciones de arsénico urinario en pobladores de dos distritos de la región Tacna, 2017 (RPMESP)", "url": "http://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1726-46342018000200002", "anio": 2018}
+    ]
+  },
+  {
+    "id": "madre-de-dios",
+    "titulo": "Madre de Dios: mercurio de la minería aurífera en personas, peces y aire",
+    "lugar": "Puerto Maldonado, Huaypetue, corredor de la Interoceánica y comunidades de la Reserva Comunal Amarakaeri, Madre de Dios",
+    "pregunta": "¿Qué evidencia biomédica y ambiental existe sobre la exposición a mercurio de la población de Madre de Dios?",
+    "resumen": "Madre de Dios es el caso mejor documentado del Perú: al menos ocho estudios revisados por pares desde 2010 muestran mercurio elevado en cabello, orina y sangre. En Puerto Maldonado (2012) el 77.9 % de 226 adultos superó 1 ppm en cabello; en 723 personas de 46 comunidades de la Interoceánica (2014-15) la mediana fue 1.60 µg/g y 37.2 % superó 2.2 µg/g, con 42.7 % en mujeres en edad fértil; en Huaypetue (2010) todos los participantes tuvieron mercurio urinario detectable. Mediciones atmosféricas recientes muestran mercurio gaseoso de 10 a más de 5,000 ng/m³ junto a minas y tiendas de oro, con más del 70 % de origen minero según isótopos. La DIRESA reportó en 2025 que 27 % de las personas muestreadas cerca de Amarakaeri superaba el límite urinario.",
+    "hallazgos": [
+      {"nivel": "A", "texto": "En Puerto Maldonado (2012), 226 adultos de 17 a 77 años tuvieron una media de 2.73 ppm de mercurio en cabello (rango 0.02-27.4); 77.9 % superó el valor de referencia de 1 ppm; mujeres en edad fértil media 2.98 ppm; 60 % de las especies de pescado de mercado superó 0.30 ppm.", "fuente": "Fernandez LE. CAMEP (Carnegie Institution for Science), informe 1, marzo 2013", "url": "https://www.actualidadambiental.pe/wp-content/uploads/2013/09/Estudio-sobre-niveles-de-mercurio-en-poblaci%C3%B3n-de-Madre-de-Dios1.pdf"},
+      {"nivel": "A", "texto": "En 723 personas de 46 comunidades a menos de 10 km de la Interoceánica (2014-15), la mediana de mercurio en cabello fue 1.60 µg/g (media 2.24); 37.2 % superó 2.2 µg/g, incluidos 42.7 % de las mujeres en edad fértil y 20.0 % de los menores de 5 años.", "fuente": "Feingold BJ, Berky A, Hsu-Kim H, Rojas Jurado E, Pan WK. Environ Res 2020;183:108720", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8299663/"},
+      {"nivel": "A", "texto": "En Huaypetue (julio 2010), los 103 residentes evaluados tuvieron mercurio urinario detectable (media geométrica 5.5 µg/g de creatinina, rango 0.7-151) y 91 % metilmercurio detectable en sangre (media geométrica 2.7 µg/L, rango 0.6-10).", "fuente": "Yard EE, Horton J, Schier JG, Caldwell K, Sanchez C, Lewis L, Gastañaga C. J Med Toxicol 2012;8", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3550269/"},
+      {"nivel": "A", "texto": "El mercurio gaseoso elemental en Madre de Dios fue de 1.3 a 11 ng/m³ a escala regional (fondo < 1) y de 10 a más de 5,000 ng/m³ junto a áreas mineras y tiendas de oro; el modelo isotópico atribuye más del 70 % a la minería artesanal.", "fuente": "Szponar N et al. Environ Sci Technol 2025;59 (DOI 10.1021/acs.est.4c10521)", "url": "https://pubs.acs.org/doi/10.1021/acs.est.4c10521"},
+      {"nivel": "B", "texto": "El consumo de pescado fue el predictor más fuerte del mercurio en cabello; el nivel fue significativamente mayor en zonas mineras que en Puerto Maldonado y en hombres que en mujeres.", "fuente": "Ashe K. PLoS One 2012;7:e33305", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3306380/"},
+      {"nivel": "B", "texto": "El 81 % de los residentes de comunidades mineras tenía el mercurio del cabello predominantemente como metilmercurio (exposición dietética); usar solo orina habría clasificado erróneamente como baja exposición a cerca del 59 %.", "fuente": "Koenigsmark F et al. Int J Environ Res Public Health 2021;18:13350", "url": "https://doi.org/10.3390/ijerph182413350"},
+      {"nivel": "B", "texto": "Adultos de zonas con minería tuvieron más arsénico y cadmio en uñas que los de zonas sin minería; el consumo de pescado se asoció con más mercurio y plomo en uñas (n=418, 2014).", "fuente": "Pettigrew SM et al. Int J Environ Res Public Health 2022;19:6335", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9142029/"},
+      {"nivel": "C", "texto": "Prensa (El Comercio/Mongabay, ago-2026) cita una cohorte de 164 niños de 14 comunidades de Amarakaeri (2015-16) con 32.9 % sobre el límite OMS y media de 4.1 mg/kg en niños indígenas, una cohorte de 198 pares madre-recién nacido con 29 % de madres sobre el umbral CDC, y la campaña DIRESA jun-ago 2025 con 27 % de muestras urinarias sobre el límite. Los artículos primarios no se abrieron.", "fuente": "El Comercio / Mongabay Latam", "url": "https://elcomercio.pe/tecnologia/ecologia/mercurio-en-la-sangre-la-huella-toxica-en-ninos-y-gestantes-de-madre-de-dios-en-peru-noticia/"},
+      {"nivel": "D", "texto": "La vigilancia del CDC registró solo 1 persona expuesta a metales pesados en Madre de Dios a la SE 12 de 2025, lo que muestra que el sistema oficial no captura la exposición documentada por la investigación.", "fuente": "CDC-MINSA, Sala situacional SE 12-2025", "url": "https://www.dge.gob.pe/portal/docs/vigilancia/sala/2025/SE12/metales.pdf"}
+    ],
+    "mediciones": [
+      {"que": "Mercurio en cabello, adultos de Puerto Maldonado (n=226)", "valor": "media 2.73 ppm; 77.9 % > 1 ppm; rango 0.02-27.4", "referencia": "US EPA 1 ppm", "fuente": "CAMEP 2013", "url": "https://www.actualidadambiental.pe/wp-content/uploads/2013/09/Estudio-sobre-niveles-de-mercurio-en-poblaci%C3%B3n-de-Madre-de-Dios1.pdf", "anio": 2012},
+      {"que": "Mercurio en cabello, 46 comunidades de la Interoceánica (n=723)", "valor": "mediana 1.60 µg/g; media 2.24; 37.2 % > 2.2 µg/g", "referencia": "OMS 2.2 µg/g", "fuente": "Feingold et al. 2020", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8299663/", "anio": 2015},
+      {"que": "Mercurio urinario total, Huaypetue (n=103)", "valor": "media geométrica 5.5 µg/g creatinina (0.7-151)", "referencia": "—", "fuente": "Yard et al. 2012", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3550269/", "anio": 2010},
+      {"que": "Metilmercurio en sangre, Huaypetue (n=103)", "valor": "media geométrica 2.7 µg/L (0.6-10); 91 % detectable", "referencia": "—", "fuente": "Yard et al. 2012", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3550269/", "anio": 2010},
+      {"que": "Mercurio gaseoso elemental en aire, Madre de Dios", "valor": "1.3-11 ng/m³ regional; 10 a > 5,000 ng/m³ junto a minas y tiendas de oro", "referencia": "fondo < 1 ng/m³", "fuente": "Szponar et al. 2025", "url": "https://pubs.acs.org/doi/10.1021/acs.est.4c10521", "anio": 2025},
+      {"que": "Especies de pescado de mercado de Puerto Maldonado sobre 0.30 ppm", "valor": "60 %", "referencia": "US EPA 0.30 ppm", "fuente": "CAMEP 2013", "url": "https://www.actualidadambiental.pe/wp-content/uploads/2013/09/Estudio-sobre-niveles-de-mercurio-en-poblaci%C3%B3n-de-Madre-de-Dios1.pdf", "anio": 2012},
+      {"que": "Personas expuestas a metales pesados notificadas en Madre de Dios (vigilancia CDC, SE 12-2025)", "valor": "1", "referencia": "1,097 nacional", "fuente": "CDC-MINSA", "url": "https://www.dge.gob.pe/portal/docs/vigilancia/sala/2025/SE12/metales.pdf", "anio": 2025}
+    ],
+    "faltantes": [
+      "Artículos primarios de las cohortes Amarakaeri (2020) y Conamad (2023) citadas por la prensa",
+      "Informe oficial DIRESA Madre de Dios de la campaña jun-ago 2025 (n, localidades, % sobre límite)",
+      "Informe de mercurio atmosférico 2025 citado por La República (93 % desde tiendas de oro)",
+      "Serie temporal por distrito (Huepetuhe, Inambari, Laberinto, Tambopata) de biomarcadores",
+      "Datos de HIS/SINADEF por distrito para efectos neurológicos y renales atribuibles"
+    ],
+    "siguientes": [
+      "Localizar en PubMed las cohortes Amarakaeri (Duke/CINCIA) y Conamad para reemplazar las cifras de prensa por primarias",
+      "Solicitar a DIRESA Madre de Dios y CENSOPAS los resultados de dosaje 2025",
+      "Descargar SINADEF y filtrar causas T56.1 (mercurio) y afines por distrito de domicilio en Madre de Dios",
+      "Georreferenciar los estudios por distrito para el mapa del observatorio"
+    ],
+    "referencias": [
+      {"titulo": "Mercurio en Madre de Dios: concentraciones en peces y seres humanos en Puerto Maldonado (CAMEP, Carnegie)", "url": "https://www.actualidadambiental.pe/wp-content/uploads/2013/09/Estudio-sobre-niveles-de-mercurio-en-poblaci%C3%B3n-de-Madre-de-Dios1.pdf", "anio": 2013},
+      {"titulo": "Population-based dietary exposure to mercury through fish consumption in the Southern Peruvian Amazon", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8299663/", "anio": 2020},
+      {"titulo": "Mercury exposure among artisanal gold miners in Madre de Dios, Peru: a cross-sectional study", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3550269/", "anio": 2012},
+      {"titulo": "Elevated mercury concentrations in humans of Madre de Dios, Peru", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3306380/", "anio": 2012},
+      {"titulo": "Efficacy of hair total mercury content as a biomarker of methylmercury exposure in ASGM communities of Madre de Dios", "url": "https://doi.org/10.3390/ijerph182413350", "anio": 2021},
+      {"titulo": "Adult exposures to toxic trace elements as measured in nails along the Interoceanic Highway in the Peruvian Amazon", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9142029/", "anio": 2022},
+      {"titulo": "Tracing atmospheric mercury from artisanal and small-scale gold mining (Environ Sci Technol)", "url": "https://pubs.acs.org/doi/10.1021/acs.est.4c10521", "anio": 2025},
+      {"titulo": "Mercurio en la sangre: la huella tóxica en niños y gestantes de Madre de Dios (El Comercio / Mongabay Latam)", "url": "https://elcomercio.pe/tecnologia/ecologia/mercurio-en-la-sangre-la-huella-toxica-en-ninos-y-gestantes-de-madre-de-dios-en-peru-noticia/", "anio": 2026},
+      {"titulo": "Minería eleva niveles de mercurio en el aire de Madre de Dios (La República)", "url": "https://larepublica.pe/sociedad/2026/09/11/mineria-en-madre-de-dios-tiendan-de-oro-emiten-el-93-del-mercurio-detectado-en-el-aire-de-zonas-urbanas-614349", "anio": 2026}
+    ]
+  }
+]

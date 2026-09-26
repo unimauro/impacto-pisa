@@ -21,15 +21,23 @@ Observatorio de datos abiertos que cruza, a nivel de distrito (UBIGEO), la geoqu
 ## Datos y resultados (resumen)
 - 28 184 muestras de sedimento (INGEMMET, 2000–2018) asignadas a 1 276 distritos; 9 134 con As > 17 ppm (PEL).
 - 6 122 pasivos ambientales mineros, 87 334 registros REINFO (23 816 vigentes), 313 unidades mineras, 3 266 pasivos de hidrocarburos.
+- 75 273 análisis de As/Hg/Pb/Cd en agua superficial (OEFA 2014–2026) en 498 distritos: 26,7 % de los análisis de arsénico supera el ECA A1.
+- 3 930 emergencias ambientales (OEFA), 77 mil ha de minería ilegal y 911 mil ha de minería informal identificadas por OEFA, intersectadas por distrito.
+- 75 273 análisis de As/Hg/Pb/Cd en agua superficial (OEFA 2014–2026) en 498 distritos: 26,7 % de los análisis de arsénico supera el ECA A1.
+- 3 930 emergencias ambientales (OEFA), 77 mil ha de minería ilegal y 911 mil ha de minería informal identificadas por OEFA, intersectadas por distrito.
 - 1,19 millones de defunciones 2019–2025 (SINADEF) agregadas por distrito de domicilio y grupo de causa.
-- ENLA 2024 (4.º primaria) en 1 586 distritos.
-- 108 pares ambiente↔resultado analizados; ninguna correlación parcial supera |r| = 0,2. La señal ambiental, si existe, es pequeña frente a pobreza y ruralidad a esta escala.
+- ENLA 2024 (4.º primaria) en 1 586 distritos; serie ECE 2016/2018 (misma escala), ECE 2019 2.º secundaria, deserción y atraso escolar (ESCALE).
+- 240 pares ambiente↔resultado analizados; ninguna correlación parcial supera |r| = 0,2. La señal ambiental, si existe, es pequeña frente a pobreza y ruralidad a esta escala.
 
 ## Estructura
 ```
 etl/arcgis.py            descarga genérica ArcGIS REST (GEOCATMIN, PIFA…)
 etl/sinadef_distrital.py agrega SINADEF por distrito (cruce por nombres: RENIEC ≠ INEI)
 etl/build_distritos.py   integra todo por UBIGEO (punto-en-polígono) → app/public/data/*.json
+etl/oefa_agua.py         OEFA agua superficial: As/Hg/Pb/Cd, UTM→WGS84, % sobre ECA por distrito
+etl/educacion_extra.py   ECE 2016/2018/2019 y ESCALE deserción/atraso por distrito
+etl/oefa_agua.py         OEFA agua superficial: As/Hg/Pb/Cd, UTM→WGS84, % sobre ECA por distrito
+etl/educacion_extra.py   ECE 2016/2018/2019 y ESCALE deserción/atraso por distrito
 etl/analisis.py          correlaciones, IC bootstrap, parciales, OLS HC3, matriz → analisis.json
 tests/test_datos.py      pruebas de calidad (UBIGEO, rangos, unidades, JSON estricto, consistencia)
 app/                     React 19 + TypeScript + Vite + Tailwind + Leaflet + ECharts (GitHub Pages)

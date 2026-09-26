@@ -53,7 +53,9 @@ export default function Panorama() {
               <Kpi v={fmtInt(res.reinfo.n)} l="registros REINFO" nota={`${fmtInt(res.reinfo.vigente)} vigentes`} />
               <Kpi v={fmtInt(res.enla.n_distritos)} l="distritos con ENLA 2024" nota="UMC-MINEDU" />
               <Kpi v={fmtInt(res.sinadef.def_total)} l="defunciones 2019–2025" nota="SINADEF" />
-              <Kpi v={fmtInt(res.cobertura.agua)} l="distritos con análisis de agua" nota="INGEMMET (54 puntos)" />
+              <Kpi v={fmtInt(res.oefa_agua?.muestras)} l="análisis de metales en agua" nota={`OEFA, ${fmtInt(res.oefa_agua?.distritos)} distritos`} />
+              <Kpi v={fmtInt(res.emergencias?.n)} l="emergencias ambientales" nota="OEFA 2011–2026" />
+              <Kpi v={fmtInt(res.mineria_ilegal_ha)} l="ha de minería ilegal identificada" nota="OEFA PIFA" />
             </div>
           </Panel>}
           <Panel>

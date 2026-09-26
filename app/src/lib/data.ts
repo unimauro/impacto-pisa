@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { Distrito, Analisis, Resumen, PuntoSed, PuntoPam, PuntoAgua, Fuente } from './types'
+import type { Distrito, Analisis, Resumen, PuntoSed, PuntoPam, PuntoAgua, PuntoOefa, Fuente } from './types'
 const BASE = import.meta.env.BASE_URL + 'data/'
 const cache = new Map<string, Promise<unknown>>()
 export function load<T>(name: string): Promise<T> {
@@ -17,6 +17,7 @@ export const useResumen = () => useData<Resumen>('resumen.json')
 export const useSedimentos = () => useData<{ campos: string[]; n: number; puntos: PuntoSed[] }>('puntos-sedimentos.json')
 export const usePam = () => useData<{ campos: string[]; n: number; puntos: PuntoPam[] }>('puntos-pam.json')
 export const useAguas = () => useData<PuntoAgua[]>('puntos-aguas.json')
+export const useOefaAgua = () => useData<{ campos: string[]; eca: Record<string, [number, number]>; n_muestras: number; puntos: PuntoOefa[] }>('oefa-agua-puntos.json')
 export const useFuentes = () => useData<Fuente[]>('catalogo.json')
 export const useGeo = () => useData<GeoJSON.FeatureCollection>('peru-distrital.geojson')
 
@@ -38,9 +39,19 @@ export const VARS: VarDef[] = [
   { id: 'reinfo_por_10k', label: 'Registros REINFO por 10 mil habitantes', corto: 'REINFO por 10 mil hab.', dominio: 'ambiente', unidad: 'por 10 mil hab.', fuente: 'MINEM / INEI', nota: 'Intensidad relativa de la minería en formalización.', log: true, get: d => d.reinfo_total && d.pob ? d.reinfo_total / d.pob * 1e4 : null },
   { id: 'pam_n', label: 'Pasivos ambientales mineros', corto: 'Pasivos mineros', dominio: 'ambiente', unidad: 'pasivos', fuente: 'MINEM Inventario PAM', nota: 'Labores, residuos e infraestructura minera abandonadas.', log: true, get: d => d.pam_n || null },
   { id: 'um_n', label: 'Unidades mineras formales', corto: 'Unidades mineras', dominio: 'ambiente', unidad: 'unidades', fuente: 'MINEM/OSINERGMIN', nota: 'Producción + exploración.', get: d => d.um_n || null },
+  { id: 'min_ilegal_ha', label: 'Área de minería ilegal identificada (OEFA)', corto: 'Minería ilegal (ha)', dominio: 'ambiente', unidad: 'ha', fuente: 'OEFA PIFA (UFAFEMA-PPO, GORE, REINFO excluido)', nota: 'Polígonos oficiales de minería ilegal intersectados con el distrito. Solo lo identificado por el Estado.', log: true, get: d => n(d.min_ilegal_ha) },
+  { id: 'min_informal_ha', label: 'Área de minería informal (REINFO) según OEFA', corto: 'Minería informal (ha)', dominio: 'ambiente', unidad: 'ha', fuente: 'OEFA PIFA', nota: 'Áreas declaradas por inscritos en REINFO.', log: true, get: d => n(d.min_informal_ha) },
+  { id: 'emerg_n', label: 'Emergencias ambientales atendidas por OEFA (derrames, fugas, incidentes)', corto: 'Emergencias OEFA', dominio: 'ambiente', unidad: 'eventos', fuente: 'OEFA ODES, 2011–2026', nota: 'Eventos con fecha, administrado y subsector; 55 % hidrocarburos.', log: true, get: d => (d.emerg_n as number) || null },
+  { id: 'oefa_as_pct_a1', label: 'Agua superficial: % de muestras con arsénico sobre ECA A1 (0,01 mg/L)', corto: 'Agua: As > ECA A1', dominio: 'ambiente', unidad: '%', fuente: 'OEFA monitoreo 2014–2026', nota: 'Mediciones reales de OEFA en cuerpos de agua (supervisión y evaluación ambiental). Muestreo dirigido a zonas con actividad fiscalizada.', get: d => n(d.oefa_as_pct_a1) },
+  { id: 'oefa_hg_pct_a1', label: 'Agua superficial: % de muestras con mercurio sobre ECA A1 (0,001 mg/L)', corto: 'Agua: Hg > ECA A1', dominio: 'ambiente', unidad: '%', fuente: 'OEFA monitoreo 2014–2026', nota: 'Muestreo dirigido; no representa todo el distrito.', get: d => n(d.oefa_hg_pct_a1) },
+  { id: 'oefa_pb_pct_a1', label: 'Agua superficial: % de muestras con plomo sobre ECA A1 (0,01 mg/L)', corto: 'Agua: Pb > ECA A1', dominio: 'ambiente', unidad: '%', fuente: 'OEFA monitoreo 2014–2026', nota: 'Muestreo dirigido.', get: d => n(d.oefa_pb_pct_a1) },
   { id: 'pasivos_hc_n', label: 'Pasivos ambientales de hidrocarburos', corto: 'Pasivos de hidrocarburos', dominio: 'ambiente', unidad: 'pasivos', fuente: 'OEFA PIFA', nota: 'Inventario nacional comunicado al MINEM (concentrado en Piura).', log: true, get: d => d.pasivos_hc_n || null },
   { id: 'enla_lec_sat', label: 'ENLA 2024 lectura: alumnos en nivel satisfactorio (4.º primaria)', corto: 'Lectura satisfactorio', dominio: 'educacion', unidad: '%', fuente: 'UMC-MINEDU', nota: 'Censal; ver cobertura de estudiantes por distrito.', get: d => n(d.enla_lec_sat) },
   { id: 'enla_mat_sat', label: 'ENLA 2024 matemática: alumnos en nivel satisfactorio (4.º primaria)', corto: 'Matemática satisfactorio', dominio: 'educacion', unidad: '%', fuente: 'UMC-MINEDU', nota: 'Censal; ver cobertura.', get: d => n(d.enla_mat_sat) },
+  { id: 'delta_enla_lec_16_24', label: 'Cambio en lectura satisfactorio 4.º primaria, 2016 → 2024', corto: 'Δ lectura 2016–2024', dominio: 'educacion', unidad: 'puntos porcentuales', fuente: 'UMC (ECE 2016, ENLA 2024)', nota: 'Misma serie según UMC. Positivo = mejora.', get: d => typeof d.ece16_4p_lec_sat === 'number' && typeof d.enla_lec_sat === 'number' ? d.enla_lec_sat - d.ece16_4p_lec_sat : null },
+  { id: 'ece19_2s_lec_sat', label: 'ECE 2019 lectura: satisfactorio, 2.º secundaria (último dato distrital)', corto: 'Lectura 2.º sec. 2019', dominio: 'educacion', unidad: '%', fuente: 'UMC-MINEDU', nota: 'Último resultado distrital de secundaria publicado.', get: d => n(d.ece19_2s_lec_sat) },
+  { id: 'desercion_prim_23_24', label: 'Deserción interanual en primaria 2023 → 2024', corto: 'Deserción primaria', dominio: 'educacion', unidad: '%', fuente: 'ESCALE-SIAGIE', nota: 'Alumnos matriculados en 2023 que no aparecen en 2024 (excluye fallecidos).', get: d => n(d.desercion_prim_23_24) },
+  { id: 'atraso_prim_2025', label: 'Atraso escolar en primaria 2025', corto: 'Atraso primaria', dominio: 'educacion', unidad: '%', fuente: 'ESCALE-SIAGIE', nota: 'Alumnos con edad mayor a la normativa para su grado.', get: d => n(d.atraso_prim_2025) },
   { id: 'enla_lec_prev', label: 'ENLA 2024 lectura: alumnos previo al inicio', corto: 'Lectura previo al inicio', dominio: 'educacion', unidad: '%', fuente: 'UMC-MINEDU', nota: 'Nivel más bajo de logro.', get: d => n(d.enla_lec_prev) },
   { id: 'tasa_renal', label: 'Mortalidad por insuficiencia renal (N17–N19)', corto: 'Mortalidad renal', dominio: 'salud', unidad: 'por 100 mil hab-año', fuente: 'SINADEF 2019–2025', nota: 'Tasa cruda; distritos < 5 mil hab. son inestables (excluidos).', get: d => d.tasa_inestable ? null : n(d.tasa_renal) },
   { id: 'tasa_hepatica', label: 'Mortalidad por enfermedad hepática (K70–K77)', corto: 'Mortalidad hepática', dominio: 'salud', unidad: 'por 100 mil hab-año', fuente: 'SINADEF 2019–2025', nota: 'Tasa cruda.', get: d => d.tasa_inestable ? null : n(d.tasa_hepatica) },
