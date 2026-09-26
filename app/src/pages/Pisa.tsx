@@ -20,9 +20,9 @@ export default function Pisa() {
   const ult = p.peru[p.peru.length - 1]; const prev = p.peru[p.peru.length - 2]
   const posPeru = tabla.findIndex(x => x.iso3 === 'PER') + 1
   const serie = {
-    grid: { left: 44, right: 16, top: 30, bottom: 30 }, legend: { top: 0 }, tooltip: { trigger: 'axis' },
+    grid: { left: 44, right: 36, top: 30, bottom: 30 }, legend: { top: 0 }, tooltip: { trigger: 'axis' },
     xAxis: { type: 'category', data: p.peru.map(r => r.anio) }, yAxis: { type: 'value', min: 300, max: 450, name: 'puntaje', splitLine: { lineStyle: { color: '#e6e9e6' } } },
-    series: AREAS.map(([k, l, c]) => ({ name: l, type: 'line', data: p.peru.map(r => r[k] ?? null), itemStyle: { color: c }, lineStyle: { width: 2 }, symbolSize: 8, connectNulls: true, label: { show: true, position: 'top', fontSize: 10, formatter: (v: { value: number }) => v.value ? Math.round(v.value) : '' } })),
+    series: AREAS.map(([k, l, c]) => ({ name: l, type: 'line', data: p.peru.map(r => r[k] ?? null), itemStyle: { color: c }, lineStyle: { width: 2 }, symbolSize: 8, connectNulls: true, label: { show: true, position: 'right', fontSize: 10, formatter: (v: { value: number; dataIndex: number }) => v.dataIndex === p.peru.length - 1 && v.value ? Math.round(v.value) : '' } })),
   }
   const bajo = {
     grid: { left: 44, right: 16, top: 30, bottom: 30 }, legend: { top: 0 }, tooltip: { trigger: 'axis', valueFormatter: (v: number) => `${fmt(v)} %` },

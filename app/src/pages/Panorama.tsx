@@ -23,7 +23,7 @@ export default function Panorama() {
   return (
     <>
       <Titulo sub={<>El Perú vuelve a retroceder en PISA. Este observatorio baja del promedio nacional al distrito y cruza aprendizajes con pobreza, agua, minería y contaminación usando solo datos oficiales. Separa lo <strong>medido</strong>, lo <strong>asociado estadísticamente</strong>, las <strong>hipótesis</strong> y los <strong>vacíos</strong>.</>}>
-        ¿Qué hay detrás de los resultados del Perú en PISA?
+        Impacto que PISA: ¿qué hay detrás de los resultados del Perú?
       </Titulo>
       <div className="grid gap-3 md:grid-cols-[1.2fr_1fr] mb-6">
         <Panel className="border-agua/40">
