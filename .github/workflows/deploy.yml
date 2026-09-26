@@ -27,6 +27,8 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Build
         working-directory: app
+        env:
+          VITE_TUNKY_TOKEN: ${{ vars.VITE_TUNKY_TOKEN }}
         run: npm ci && npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

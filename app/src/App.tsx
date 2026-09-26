@@ -1,6 +1,7 @@
 import { HashRouter, Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import { useEffect, lazy, Suspense } from 'react'
 import { Cargando } from './components/ui'
+import Chat from './components/Chat'
 const Panorama = lazy(() => import('./pages/Panorama'))
 const Explorador = lazy(() => import('./pages/Explorador'))
 const Relaciones = lazy(() => import('./pages/Relaciones'))
@@ -20,7 +21,7 @@ const NAV = [
 ] as const
 const TITULOS: Record<string, string> = { '/': 'Inicio', '/pisa': 'El Perú en PISA 2000–2025 y el mundo', '/distrito': 'Explorador territorial', '/relaciones': 'Relaciones ambiente, salud y educación', '/salud': 'Salud y contaminación', '/agua': 'Agua segura', '/brechas': 'Brechas de información', '/casos': 'Estudios de caso', '/conclusiones': 'Conclusiones', '/metodologia': 'Metodología, fuentes y descargas', '/faq': 'Preguntas frecuentes', '/ecosistema': 'Ecosistema, revisión de datos y apoyo' }
 
-function ScrollTop() { const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); const k = '/' + pathname.split('/')[1]; document.title = k === '/' ? 'Impacto que PISA — El Perú en PISA y qué hay detrás, distrito por distrito' : `${TITULOS[k] ?? 'Impacto PISA'} — Impacto PISA · Observatorio Perú`; document.querySelector('link[rel=canonical]')?.setAttribute('href', 'https://unimauro.github.io/impacto-pisa/' + (pathname === '/' ? '' : '#' + pathname)) }, [pathname]); return null }
+function ScrollTop() { const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); const k = '/' + pathname.split('/')[1]; (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.('event', 'page_view', { page_path: '/impacto-pisa/#' + pathname, page_title: TITULOS[k] ?? 'Impacto PISA' }); document.title = k === '/' ? 'Impacto que PISA — El Perú en PISA y qué hay detrás, distrito por distrito' : `${TITULOS[k] ?? 'Impacto PISA'} — Impacto PISA · Observatorio Perú`; document.querySelector('link[rel=canonical]')?.setAttribute('href', 'https://unimauro.github.io/impacto-pisa/' + (pathname === '/' ? '' : '#' + pathname)) }, [pathname]); return null }
 
 export default function App() {
   return (
@@ -60,6 +61,7 @@ export default function App() {
         </Routes>
         </Suspense>
       </main>
+      <Chat />
       <footer className="border-t border-line mt-12 py-8 text-sm text-ink2">
         <div className="mx-auto max-w-7xl px-4 grid gap-4 md:grid-cols-3">
           <p>Impacto PISA (Observatorio Perú) integra datos oficiales (INGEMMET, MINEM, OEFA, MINSA-SINADEF, UMC-MINEDU, INEI, PNUD) a nivel distrital. No afirma causalidad: muestra evidencia, hipótesis y vacíos.</p>
