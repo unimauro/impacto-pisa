@@ -27,9 +27,15 @@ export default function Panorama() {
       </Titulo>
       <div className="grid gap-3 md:grid-cols-[1.2fr_1fr] mb-6">
         <Panel className="border-agua/40">
-          <div className="flex items-center justify-between"><span className="text-sm text-ink2">Conclusión principal, con los datos de {fmtInt(fl?.modelo_todos.n)} distritos</span><Evidencia n="B" /></div>
-          <p className="mt-2 text-lg leading-snug font-display">Los bajos resultados son multifactoriales: pobreza, ruralidad, altitud y conectividad explican cerca del {fl ? pct(fl.r2_socio * 100) : '…'} de las diferencias entre distritos en lectura; toda la exposición ambiental medida añade menos de {fl ? fmt(fl.ganancia_ambiente * 100, 1) : '…'} puntos.</p>
-          <p className="mt-2 text-sm text-ink2">Eso no absuelve a la contaminación: dice que, con datos distritales, su huella en el aprendizaje es pequeña frente a la desigualdad, y que la exposición real (agua de consumo, biomarcadores) no está medida. <Link className="underline" to="/conclusiones">Ver el modelo y las demás conclusiones</Link>.</p>
+          <div className="flex items-center justify-between"><span className="text-sm text-ink2">Conclusión principal · {fmtInt(fl?.modelo_todos.n)} distritos, datos oficiales</span><Evidencia n="B" /></div>
+          <p className="mt-2 text-2xl leading-tight font-display">La desigualdad pesa <strong>{fl ? Math.round(fl.r2_socio / Math.max(fl.ganancia_ambiente, 0.001)) : '…'} veces más</strong> que toda la contaminación medida en los resultados escolares del Perú.</p>
+          <ul className="mt-3 text-sm space-y-1.5">
+            <li><strong>Pobreza, ruralidad, altitud y falta de internet</strong> explican el {fl ? pct(fl.r2_socio * 100) : '…'} de las diferencias en lectura entre distritos.</li>
+            <li><strong>Arsénico, mercurio, plomo, pasivos, REINFO, minería ilegal y emergencias</strong>, todos juntos, añaden apenas {fl ? fmt(fl.ganancia_ambiente * 100, 1) : '…'} puntos.</li>
+            <li>Un distrito pobre y desconectado rinde mal <strong>con o sin minería</strong>. Ese es el hallazgo, y es robusto a los controles.</li>
+            <li>Lo que no está medido es la exposición real: <strong>ningún dato abierto de agua de consumo ni de plomo o mercurio en sangre por distrito</strong>. Ahí está la brecha, no en el promedio.</li>
+          </ul>
+          <p className="mt-3 text-sm"><Link className="inline-block rounded border border-agua px-3 py-1 text-agua hover:bg-agua/10" to="/conclusiones">Ver el modelo completo y las seis conclusiones</Link></p>
         </Panel>
         <Panel>
           <div className="flex items-center justify-between"><span className="text-sm text-ink2">El Perú en PISA {ult?.anio}</span><Evidencia n="A">OCDE / UMC</Evidencia></div>
