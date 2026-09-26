@@ -13,7 +13,7 @@ const LATAM = new Set(['PER', 'CHL', 'URY', 'MEX', 'CRI', 'BRA', 'COL', 'ARG', '
 
 export default function Pisa() {
   const { data: p } = useData<Pisa>('pisa.json')
-  const [area, setArea] = useState<'matematica' | 'lectura' | 'ciencias'>('matematica'); const [anio, setAnio] = useState(2022); const [soloLatam, setSoloLatam] = useState(false)
+  const [area, setArea] = useState<'matematica' | 'lectura' | 'ciencias'>('matematica'); const [anio, setAnio] = useState(2025); const [soloLatam, setSoloLatam] = useState(false)
   const anios = useMemo(() => p ? [...new Set(p.paises.map(x => x.anio))].sort() : [], [p])
   const tabla = useMemo(() => p ? p.paises.filter(x => x.anio === anio && x[area] != null && (!soloLatam || LATAM.has(x.iso3) || x.iso3 === 'OECD')).sort((a, b) => (b[area] ?? 0) - (a[area] ?? 0)) : [], [p, anio, area, soloLatam])
   if (!p) return <Cargando que="PISA" />
