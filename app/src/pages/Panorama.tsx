@@ -33,7 +33,8 @@ export default function Panorama() {
             <li><strong>Pobreza, ruralidad, altitud y falta de internet</strong> explican el {fl ? pct(fl.r2_socio * 100) : '…'} de las diferencias en lectura entre distritos.</li>
             <li><strong>Arsénico, mercurio, plomo, pasivos, REINFO, minería ilegal y emergencias</strong>, todos juntos, añaden apenas {fl ? fmt(fl.ganancia_ambiente * 100, 1) : '…'} puntos.</li>
             <li>Un distrito pobre y desconectado rinde mal <strong>con o sin minería</strong>. Ese es el hallazgo, y es robusto a los controles.</li>
-            <li>Lo que no está medido es la exposición real: <strong>ningún dato abierto de agua de consumo ni de plomo o mercurio en sangre por distrito</strong>. Ahí está la brecha, no en el promedio.</li>
+            <li><strong>¿Afecta entonces la contaminación?</strong> Sí, y se ve: donde hay más arsénico en las cuencas hay menos alumnos en nivel satisfactorio (β = −0,15, p &lt; 0,001), y donde hay más minería ilegal hay más deserción en primaria (β = +0,14, p &lt; 0,001). Mercurio, plomo, pasivos y REINFO no muestran señal a esta escala.</li>
+            <li>Lo que no está medido es la exposición real: <strong>ningún dato abierto de agua de consumo ni de plomo o mercurio en sangre por distrito</strong>. Un promedio distrital de sedimentos de hace 20 años diluye cualquier daño local; los estudios con biomarcadores (La Oroya, Cerro de Pasco, Madre de Dios) sí lo documentan.</li>
           </ul>
           <p className="mt-3 text-sm"><Link className="inline-block rounded border border-agua px-3 py-1 text-agua hover:bg-agua/10" to="/conclusiones">Ver el modelo completo y las seis conclusiones</Link></p>
         </Panel>
