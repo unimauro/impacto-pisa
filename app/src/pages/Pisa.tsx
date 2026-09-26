@@ -18,7 +18,7 @@ export default function Pisa() {
   const tabla = useMemo(() => p ? p.paises.filter(x => x.anio === anio && x[area] != null && (!soloLatam || LATAM.has(x.iso3) || x.iso3 === 'OECD')).sort((a, b) => (b[area] ?? 0) - (a[area] ?? 0)) : [], [p, anio, area, soloLatam])
   if (!p) return <Cargando que="PISA" />
   const ult = p.peru[p.peru.length - 1]; const prev = p.peru[p.peru.length - 2]
-  const posPeru = tabla.findIndex(x => x.iso3 === 'PER') + 1
+  const soloPaises = tabla.filter(x => x.iso3 !== 'OECD'); const posPeru = soloPaises.findIndex(x => x.iso3 === 'PER') + 1
   const serie = {
     grid: { left: 44, right: 36, top: 30, bottom: 30 }, legend: { top: 0 }, tooltip: { trigger: 'axis' },
     xAxis: { type: 'category', data: p.peru.map(r => r.anio) }, yAxis: { type: 'value', min: 300, max: 450, name: 'puntaje', splitLine: { lineStyle: { color: '#e6e9e6' } } },
@@ -54,7 +54,7 @@ export default function Pisa() {
           {AREAS.map(([k, l]) => <button key={k} onClick={() => setArea(k)} className={`rounded-full border px-3 py-1 ${area === k ? 'border-agua bg-agua/10' : 'border-line text-ink2'}`}>{l}</button>)}
           <select className="rounded border border-line bg-surface px-2 py-1" value={anio} onChange={e => setAnio(+e.target.value)}>{anios.map(a => <option key={a} value={a}>PISA {a}</option>)}</select>
           <label className="flex items-center gap-1"><input type="checkbox" checked={soloLatam} onChange={e => setSoloLatam(e.target.checked)} /> solo América Latina y promedio OCDE</label>
-          {posPeru > 0 && <span className="ml-auto">Perú: puesto <strong>{posPeru}</strong> de {tabla.length} {soloLatam ? 'en la región' : 'participantes con dato'}</span>}
+          {posPeru > 0 && <span className="ml-auto">Perú: puesto <strong>{posPeru}</strong> de {soloPaises.length} {soloLatam ? 'países de la región' : 'países y economías con dato'}</span>}
         </div>
         <Panel className="p-2"><ReactECharts option={barras} style={{ height: Math.max(320, 14 * tabla.length + 40) }} notMerge /></Panel>
         <p className="mt-2 text-xs text-ink2">Óxido = Perú; índigo = América Latina; gris = promedio OCDE. Fuente por fila en el archivo <a className="underline" href={`${import.meta.env.BASE_URL}data/pisa.json`}>pisa.json</a>.</p>
