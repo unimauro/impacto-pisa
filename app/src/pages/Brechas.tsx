@@ -54,7 +54,7 @@ export default function Brechas() {
           <li><strong>OEFA</strong>: emergencias ambientales y derrames por evento con fecha, volumen y responsable (hoy sin capa pública).</li>
           <li><strong>MINEDU-UMC</strong>: ENLA 2024 de 2.º de secundaria a nivel distrital; ECE 2016–2019 distrital para series comparables.</li>
         </ul>
-        <p className="mt-3 text-sm text-ink2">Las solicitudes de acceso a la información pública (Ley 27806) listas para presentar están en <a className="underline" href="https://github.com/unimauro/observatorio-peru/blob/main/docs/solicitudes-transparencia.md">docs/solicitudes-transparencia.md</a>.</p></Panel>
+        <p className="mt-3 text-sm text-ink2">Las solicitudes de acceso a la información pública (Ley 27806) listas para presentar están en <a className="underline" href="https://github.com/unimauro/impacto-pisa/blob/main/docs/solicitudes-transparencia.md">docs/solicitudes-transparencia.md</a>.</p></Panel>
       </Seccion>
       <div className="mt-6"><Aviso>Un cero en un inventario (pasivos, REINFO) significa que no hay registros, no que no exista actividad. Un vacío en sedimentos o agua significa que nadie ha medido.</Aviso></div>
     </>

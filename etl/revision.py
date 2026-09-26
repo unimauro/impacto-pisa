@@ -31,7 +31,7 @@ rev = {"fecha": datetime.datetime.now().isoformat(timespec="seconds"), "fuentes"
            "Casos: nivel A solo con URL abierta; UBIGEO existentes"]},
        "datos_generados": res.get("generado"), "conteos": {"distritos": res.get("n_distritos"), "sedimentos": res["sedimentos"]["n"], "pam": res["pam"]["n"], "reinfo": res["reinfo"]["n"],
                                                             "emergencias": res.get("emergencias", {}).get("n"), "oefa_agua": res.get("oefa_agua", {}).get("muestras"), "defunciones": res["sinadef"]["def_total"], "enla": res["enla"]["n_distritos"]},
-       "como_reportar": "https://github.com/unimauro/observatorio-peru/issues/new?template=error-de-datos.md&title=%5BDato%5D+"}
+       "como_reportar": "https://github.com/unimauro/impacto-pisa/issues/new?template=error-de-datos.md&title=%5BDato%5D+"}
 json.dump(rev, open(os.path.join(OUT, "revision.json"), "w"), ensure_ascii=False, indent=1)
 print(rev["fuentes_ok"], "/", rev["fuentes_total"], "fuentes OK;", resumen_tests)
 for f in fuentes:

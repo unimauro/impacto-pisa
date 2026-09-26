@@ -86,3 +86,12 @@ def test_factores_y_revision():
         for c in m["coef"]: assert c["ci"][0] <= c["beta"] <= c["ci"][1] and -1 <= c["spearman"] <= 1
         assert r["r2_socio"] <= m["r2"] + 1e-9
     assert RV["fuentes_total"] == len(C) and RV["tests"]["ok"]
+
+def test_pisa():
+    P = load("pisa.json"); assert len(P["peru"]) >= 6
+    for r in P["peru"]:
+        for a in ("lectura", "matematica", "ciencias"):
+            if r.get(a) is not None: assert 250 <= r[a] <= 600, (r["anio"], a)
+            if r.get(f"{a}_bajo_nivel2") is not None: assert 0 <= r[f"{a}_bajo_nivel2"] <= 100
+    for c in P["paises"]:
+        assert c["fuente"].startswith("http") and (c["matematica"] is None or 250 <= c["matematica"] <= 650)

@@ -2,11 +2,14 @@ import { useMemo, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import Mapa, { Leyenda } from '../components/Mapa'
 import { Titulo, Panel, Kpi, Evidencia, Aviso, Cargando, Error as Err } from '../components/ui'
-import { useDistritos, useResumen, VARS, varById, fmt, fmtInt, quantiles, DOMINIO_LABEL, type Dominio } from '../lib/data'
+import { useDistritos, useResumen, useData, VARS, varById, fmt, fmtInt, pct, quantiles, DOMINIO_LABEL, type Dominio } from '../lib/data'
+import type { Pisa } from './Pisa'
+interface Fact { resultados: { y: string; label: string; modelo_todos: { n: number; r2: number }; r2_socio: number; ganancia_ambiente: number }[] }
 import { RAMPAS, colorScale } from '../lib/colors'
 
 export default function Panorama() {
-  const { data: dist, error } = useDistritos(); const { data: res } = useResumen(); const nav = useNavigate()
+  const { data: dist, error } = useDistritos(); const { data: res } = useResumen(); const nav = useNavigate(); const { data: pisa } = useData<Pisa>('pisa.json'); const { data: fac } = useData<Fact>('factores.json')
+  const ult = pisa?.peru[pisa.peru.length - 1]; const prev = pisa?.peru[pisa.peru.length - 2]; const fl = fac?.resultados.find(r => r.y === 'enla_lec_sat')
   const [varId, setVarId] = useState('sed_as_med'); const [dep, setDep] = useState('')
   const v = varById(varId)
   const deps = useMemo(() => dist ? [...new Set(dist.map(d => d.departamento))].sort() : [], [dist])
@@ -19,9 +22,23 @@ export default function Panorama() {
   if (error) return <Err msg={error} />
   return (
     <>
-      <Titulo sub={<>Un cruce distrital de datos oficiales sobre contaminación, minería, salud y aprendizajes. El observatorio separa lo <strong>medido</strong>, lo <strong>asociado estadísticamente</strong>, las <strong>hipótesis</strong> y los <strong>vacíos</strong>: ausencia de dato no significa ausencia de problema.</>}>
-        ¿Dónde hay contaminación, dónde hay daño y dónde no sabemos?
+      <Titulo sub={<>El Perú vuelve a retroceder en PISA. Este observatorio baja del promedio nacional al distrito y cruza aprendizajes con pobreza, agua, minería y contaminación usando solo datos oficiales. Separa lo <strong>medido</strong>, lo <strong>asociado estadísticamente</strong>, las <strong>hipótesis</strong> y los <strong>vacíos</strong>.</>}>
+        ¿Qué hay detrás de los resultados del Perú en PISA?
       </Titulo>
+      <div className="grid gap-3 md:grid-cols-[1.2fr_1fr] mb-6">
+        <Panel className="border-agua/40">
+          <div className="flex items-center justify-between"><span className="text-sm text-ink2">Conclusión principal, con los datos de {fmtInt(fl?.modelo_todos.n)} distritos</span><Evidencia n="B" /></div>
+          <p className="mt-2 text-lg leading-snug font-display">Los bajos resultados son multifactoriales: pobreza, ruralidad, altitud y conectividad explican cerca del {fl ? pct(fl.r2_socio * 100) : '…'} de las diferencias entre distritos en lectura; toda la exposición ambiental medida añade menos de {fl ? fmt(fl.ganancia_ambiente * 100, 1) : '…'} puntos.</p>
+          <p className="mt-2 text-sm text-ink2">Eso no absuelve a la contaminación: dice que, con datos distritales, su huella en el aprendizaje es pequeña frente a la desigualdad, y que la exposición real (agua de consumo, biomarcadores) no está medida. <Link className="underline" to="/conclusiones">Ver el modelo y las demás conclusiones</Link>.</p>
+        </Panel>
+        <Panel>
+          <div className="flex items-center justify-between"><span className="text-sm text-ink2">El Perú en PISA {ult?.anio}</span><Evidencia n="A">OCDE / UMC</Evidencia></div>
+          {ult && prev ? <div className="mt-2 grid grid-cols-3 gap-2">
+            {([['matematica', 'Matemática'], ['lectura', 'Lectura'], ['ciencias', 'Ciencias']] as const).map(([k, l]) => { const d = (ult[k] as number) - (prev[k] as number); return <div key={k}><div className="font-display text-3xl leading-none">{fmt(ult[k] as number, 0)}</div><div className="text-xs text-ink2">{l}</div><div className={`text-xs ${d < 0 ? 'text-mina' : 'text-agua'}`}>{d >= 0 ? '+' : ''}{fmt(d, 0)} vs {prev.anio}</div><div className="text-xs text-ink3">{pct(ult[`${k}_bajo_nivel2`] as number)} bajo nivel 2</div></div> })}
+          </div> : <Cargando que="PISA" />}
+          <p className="mt-2 text-sm"><Link className="underline" to="/pisa">Serie 2000–2025 y comparación con el mundo</Link></p>
+        </Panel>
+      </div>
       <div className="flex flex-wrap gap-2 mb-4">{(['A', 'B', 'C', 'D'] as const).map(n => <Evidencia key={n} n={n} />)}</div>
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
         <div>

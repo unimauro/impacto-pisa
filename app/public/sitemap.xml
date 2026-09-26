@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://unimauro.github.io/observatorio-peru/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-<url><loc>https://unimauro.github.io/observatorio-peru/#/distrito</loc><changefreq>monthly</changefreq></url>
-<url><loc>https://unimauro.github.io/observatorio-peru/#/relaciones</loc><changefreq>monthly</changefreq></url>
-<url><loc>https://unimauro.github.io/observatorio-peru/#/salud</loc><changefreq>monthly</changefreq></url>
-<url><loc>https://unimauro.github.io/observatorio-peru/#/agua</loc><changefreq>monthly</changefreq></url>
-<url><loc>https://unimauro.github.io/observatorio-peru/#/brechas</loc><changefreq>monthly</changefreq></url>
-<url><loc>https://unimauro.github.io/observatorio-peru/#/casos</loc><changefreq>monthly</changefreq></url>
-<url><loc>https://unimauro.github.io/observatorio-peru/#/metodologia</loc><changefreq>monthly</changefreq></url>
-<url><loc>https://unimauro.github.io/observatorio-peru/#/conclusiones</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-<url><loc>https://unimauro.github.io/observatorio-peru/#/faq</loc><changefreq>monthly</changefreq></url>
-<url><loc>https://unimauro.github.io/observatorio-peru/#/ecosistema</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/distrito</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/relaciones</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/salud</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/agua</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/brechas</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/casos</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/metodologia</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/conclusiones</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/faq</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/ecosistema</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://unimauro.github.io/impacto-pisa/#/pisa</loc><changefreq>yearly</changefreq><priority>0.9</priority></url>
 </urlset>

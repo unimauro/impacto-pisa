@@ -1,6 +1,6 @@
-# Observatorio Perú — Contaminación, salud y educación por distrito
+# Impacto PISA — Observatorio Perú: aprendizajes, contaminación y salud por distrito
 
-**Sitio:** https://unimauro.github.io/observatorio-peru/
+**Sitio:** https://unimauro.github.io/impacto-pisa/
 
 Observatorio de datos abiertos que cruza, a nivel de distrito (UBIGEO), la geoquímica de sedimentos de INGEMMET (arsénico, mercurio, plomo, cadmio), los inventarios mineros del MINEM (pasivos ambientales y REINFO), las capas de OEFA/OSINERGMIN/SERNANP, la mortalidad por causa de SINADEF, los aprendizajes de la ENLA 2024 (UMC-MINEDU), indicadores socioeconómicos (INEI, PNUD) y el gasto público (SIAF-MEF). Su objetivo es **investigar** si existen asociaciones entre exposición ambiental y resultados sanitarios o educativos, y dejar claro qué está **medido**, qué es **asociación estadística**, qué es **hipótesis** y dónde **faltan datos**.
 

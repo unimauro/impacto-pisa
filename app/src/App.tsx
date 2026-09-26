@@ -12,14 +12,15 @@ const Metodologia = lazy(() => import('./pages/Metodologia'))
 const Conclusiones = lazy(() => import('./pages/Conclusiones'))
 const Faq = lazy(() => import('./pages/Faq'))
 const Ecosistema = lazy(() => import('./pages/Ecosistema'))
+const Pisa = lazy(() => import('./pages/Pisa'))
 
 const NAV = [
-  ['/', 'Panorama'], ['/distrito', 'Explorador territorial'], ['/relaciones', 'Relaciones'], ['/salud', 'Salud'],
+  ['/', 'Inicio'], ['/pisa', 'El Perú en PISA'], ['/distrito', 'Explorador territorial'], ['/relaciones', 'Relaciones'], ['/salud', 'Salud'],
   ['/agua', 'Agua segura'], ['/brechas', 'Brechas'], ['/casos', 'Casos'], ['/conclusiones', 'Conclusiones'], ['/metodologia', 'Metodología'], ['/faq', 'FAQ'], ['/ecosistema', 'Ecosistema y apoyo'],
 ] as const
-const TITULOS: Record<string, string> = { '/': 'Panorama', '/distrito': 'Explorador territorial', '/relaciones': 'Relaciones ambiente, salud y educación', '/salud': 'Salud y contaminación', '/agua': 'Agua segura', '/brechas': 'Brechas de información', '/casos': 'Estudios de caso', '/conclusiones': 'Conclusiones', '/metodologia': 'Metodología, fuentes y descargas', '/faq': 'Preguntas frecuentes', '/ecosistema': 'Ecosistema, revisión de datos y apoyo' }
+const TITULOS: Record<string, string> = { '/': 'Inicio', '/pisa': 'El Perú en PISA 2000–2025 y el mundo', '/distrito': 'Explorador territorial', '/relaciones': 'Relaciones ambiente, salud y educación', '/salud': 'Salud y contaminación', '/agua': 'Agua segura', '/brechas': 'Brechas de información', '/casos': 'Estudios de caso', '/conclusiones': 'Conclusiones', '/metodologia': 'Metodología, fuentes y descargas', '/faq': 'Preguntas frecuentes', '/ecosistema': 'Ecosistema, revisión de datos y apoyo' }
 
-function ScrollTop() { const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); const k = '/' + pathname.split('/')[1]; document.title = `${TITULOS[k] ?? 'Observatorio Perú'} — Observatorio Perú`; document.querySelector('link[rel=canonical]')?.setAttribute('href', 'https://unimauro.github.io/observatorio-peru/' + (pathname === '/' ? '' : '#' + pathname)) }, [pathname]); return null }
+function ScrollTop() { const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); const k = '/' + pathname.split('/')[1]; document.title = `${TITULOS[k] ?? 'Impacto PISA'} — Impacto PISA · Observatorio Perú`; document.querySelector('link[rel=canonical]')?.setAttribute('href', 'https://unimauro.github.io/impacto-pisa/' + (pathname === '/' ? '' : '#' + pathname)) }, [pathname]); return null }
 
 export default function App() {
   return (
@@ -30,7 +31,7 @@ export default function App() {
         <div className="mx-auto max-w-7xl px-4 flex flex-wrap items-center gap-x-6 gap-y-2 py-2">
           <NavLink to="/" className="flex items-center gap-2 mr-auto">
             <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="rgb(var(--agua))" strokeWidth="2"/><circle cx="16" cy="16" r="8.5" fill="none" stroke="rgb(var(--mina))" strokeWidth="2"/><circle cx="16" cy="16" r="3" fill="rgb(var(--edu))"/></svg>
-            <span className="font-display text-xl leading-none">Observatorio <span className="text-ink2">Perú</span></span>
+            <span className="font-display text-xl leading-none">Impacto <span className="text-ink2">PISA</span></span>
           </NavLink>
           <nav aria-label="Secciones" className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
             {NAV.map(([to, label]) => (
@@ -55,13 +56,14 @@ export default function App() {
           <Route path="/conclusiones" element={<Conclusiones />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/ecosistema" element={<Ecosistema />} />
+          <Route path="/pisa" element={<Pisa />} />
         </Routes>
         </Suspense>
       </main>
       <footer className="border-t border-line mt-12 py-8 text-sm text-ink2">
         <div className="mx-auto max-w-7xl px-4 grid gap-4 md:grid-cols-3">
-          <p>Observatorio Perú integra datos oficiales (INGEMMET, MINEM, OEFA, MINSA-SINADEF, UMC-MINEDU, INEI, PNUD) a nivel distrital. No afirma causalidad: muestra evidencia, hipótesis y vacíos.</p>
-          <p>Código y datos procesados: <a className="underline" href="https://github.com/unimauro/observatorio-peru">github.com/unimauro/observatorio-peru</a>. Datos procesados bajo CC BY 4.0; cada fuente conserva su licencia.</p>
+          <p>Impacto PISA (Observatorio Perú) integra datos oficiales (INGEMMET, MINEM, OEFA, MINSA-SINADEF, UMC-MINEDU, INEI, PNUD) a nivel distrital. No afirma causalidad: muestra evidencia, hipótesis y vacíos.</p>
+          <p>Código y datos procesados: <a className="underline" href="https://github.com/unimauro/impacto-pisa">github.com/unimauro/impacto-pisa</a>. Datos procesados bajo CC BY 4.0; cada fuente conserva su licencia.</p>
           <p>Proyecto de Carlos Cárdenas (<a className="underline" href="https://github.com/unimauro">unimauro</a>). Parte de una red de observatorios ciudadanos: <a className="underline" href="https://unimauro.github.io/observatorio-ambiental-peruano/">ambiental</a>, <a className="underline" href="https://unimauro.github.io/mortalidad-peru/">mortalidad</a>, <a className="underline" href="https://unimauro.github.io/educacion-peru/">educación</a>, <a className="underline" href="https://unimauro.github.io/qhaway-dashboard/">presupuesto (QHAWAY, FIEECS-UNI)</a>. <NavLink className="underline" to="/ecosistema">Apoya este trabajo</NavLink>.</p>
         </div>
       </footer>

@@ -1,7 +1,7 @@
 import { Titulo, Panel, Evidencia, Tabla, Seccion, Cargando, NIVEL } from '../components/ui'
 import { useFuentes, useResumen, fmtInt } from '../lib/data'
 const BASE = import.meta.env.BASE_URL
-const REPO = 'https://github.com/unimauro/observatorio-peru'
+const REPO = 'https://github.com/unimauro/impacto-pisa'
 export default function Metodologia() {
   const { data: f } = useFuentes(); const { data: res } = useResumen()
   return (
@@ -37,7 +37,7 @@ export default function Metodologia() {
         </ul></Panel>
       </Seccion>
       <Seccion titulo="Cómo citar">
-        <Panel><p className="text-sm">Cárdenas, C. (2026). <em>Observatorio Perú: contaminación, salud y educación por distrito</em>. Versión {res?.generado?.slice(0, 10)}. {`https://unimauro.github.io/observatorio-peru/`}. Datos originales: INGEMMET, MINEM, OEFA, MINSA-SINADEF, UMC-MINEDU, INEI, PNUD, MEF.</p></Panel>
+        <Panel><p className="text-sm">Cárdenas, C. (2026). <em>Observatorio Perú: contaminación, salud y educación por distrito</em>. Versión {res?.generado?.slice(0, 10)}. {`https://unimauro.github.io/impacto-pisa/`}. Datos originales: INGEMMET, MINEM, OEFA, MINSA-SINADEF, UMC-MINEDU, INEI, PNUD, MEF.</p></Panel>
       </Seccion>
     </>
   )
