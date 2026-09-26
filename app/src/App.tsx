@@ -9,13 +9,17 @@ const Agua = lazy(() => import('./pages/Agua'))
 const Brechas = lazy(() => import('./pages/Brechas'))
 const Casos = lazy(() => import('./pages/Casos'))
 const Metodologia = lazy(() => import('./pages/Metodologia'))
+const Conclusiones = lazy(() => import('./pages/Conclusiones'))
+const Faq = lazy(() => import('./pages/Faq'))
+const Ecosistema = lazy(() => import('./pages/Ecosistema'))
 
 const NAV = [
   ['/', 'Panorama'], ['/distrito', 'Explorador territorial'], ['/relaciones', 'Relaciones'], ['/salud', 'Salud'],
-  ['/agua', 'Agua segura'], ['/brechas', 'Brechas de información'], ['/casos', 'Estudios de caso'], ['/metodologia', 'Metodología y datos'],
+  ['/agua', 'Agua segura'], ['/brechas', 'Brechas'], ['/casos', 'Casos'], ['/conclusiones', 'Conclusiones'], ['/metodologia', 'Metodología'], ['/faq', 'FAQ'], ['/ecosistema', 'Ecosistema y apoyo'],
 ] as const
+const TITULOS: Record<string, string> = { '/': 'Panorama', '/distrito': 'Explorador territorial', '/relaciones': 'Relaciones ambiente, salud y educación', '/salud': 'Salud y contaminación', '/agua': 'Agua segura', '/brechas': 'Brechas de información', '/casos': 'Estudios de caso', '/conclusiones': 'Conclusiones', '/metodologia': 'Metodología, fuentes y descargas', '/faq': 'Preguntas frecuentes', '/ecosistema': 'Ecosistema, revisión de datos y apoyo' }
 
-function ScrollTop() { const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0) }, [pathname]); return null }
+function ScrollTop() { const { pathname } = useLocation(); useEffect(() => { window.scrollTo(0, 0); const k = '/' + pathname.split('/')[1]; document.title = `${TITULOS[k] ?? 'Observatorio Perú'} — Observatorio Perú`; document.querySelector('link[rel=canonical]')?.setAttribute('href', 'https://unimauro.github.io/observatorio-peru/' + (pathname === '/' ? '' : '#' + pathname)) }, [pathname]); return null }
 
 export default function App() {
   return (
@@ -48,6 +52,9 @@ export default function App() {
           <Route path="/casos" element={<Casos />} />
           <Route path="/casos/:id" element={<Casos />} />
           <Route path="/metodologia" element={<Metodologia />} />
+          <Route path="/conclusiones" element={<Conclusiones />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/ecosistema" element={<Ecosistema />} />
         </Routes>
         </Suspense>
       </main>
@@ -55,7 +62,7 @@ export default function App() {
         <div className="mx-auto max-w-7xl px-4 grid gap-4 md:grid-cols-3">
           <p>Observatorio Perú integra datos oficiales (INGEMMET, MINEM, OEFA, MINSA-SINADEF, UMC-MINEDU, INEI, PNUD) a nivel distrital. No afirma causalidad: muestra evidencia, hipótesis y vacíos.</p>
           <p>Código y datos procesados: <a className="underline" href="https://github.com/unimauro/observatorio-peru">github.com/unimauro/observatorio-peru</a>. Datos procesados bajo CC BY 4.0; cada fuente conserva su licencia.</p>
-          <p>Proyecto de Carlos Cárdenas (<a className="underline" href="https://github.com/unimauro">unimauro</a>). Parte del ecosistema de observatorios ciudadanos: mortalidad, educación, ambiente, presupuesto (QHAWAY, FIEECS-UNI).</p>
+          <p>Proyecto de Carlos Cárdenas (<a className="underline" href="https://github.com/unimauro">unimauro</a>). Parte de una red de observatorios ciudadanos: <a className="underline" href="https://unimauro.github.io/observatorio-ambiental-peruano/">ambiental</a>, <a className="underline" href="https://unimauro.github.io/mortalidad-peru/">mortalidad</a>, <a className="underline" href="https://unimauro.github.io/educacion-peru/">educación</a>, <a className="underline" href="https://unimauro.github.io/qhaway-dashboard/">presupuesto (QHAWAY, FIEECS-UNI)</a>. <NavLink className="underline" to="/ecosistema">Apoya este trabajo</NavLink>.</p>
         </div>
       </footer>
     </HashRouter>

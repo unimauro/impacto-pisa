@@ -77,3 +77,12 @@ def test_oefa_puntos_json_estricto():
     assert OA["n_muestras"] > 50000 and len(OA["puntos"]) > 40000
     for p in OA["puntos"][:2000]:
         assert p[2] in ("as", "hg", "pb", "cd") and p[3] >= 0 and p[6] <= p[5] and (p[8] is None or len(p[8]) == 6)
+
+def test_factores_y_revision():
+    F = load("factores.json"); RV = load("revision.json")
+    assert len(F["resultados"]) >= 5
+    for r in F["resultados"]:
+        m = r["modelo_todos"]; assert 0 <= m["r2"] <= 1 and m["n"] >= 100
+        for c in m["coef"]: assert c["ci"][0] <= c["beta"] <= c["ci"][1] and -1 <= c["spearman"] <= 1
+        assert r["r2_socio"] <= m["r2"] + 1e-9
+    assert RV["fuentes_total"] == len(C) and RV["tests"]["ok"]

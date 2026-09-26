@@ -1,0 +1,235 @@
+{
+ "fecha": "2026-09-26T06:16:32",
+ "fuentes": [
+  {
+   "id": "ingemmet-geoquimica-2022",
+   "institucion": "INGEMMET",
+   "dataset": "Programa Nacional de Geoquímica — sedimentos de quebrada (SERV_GEOQUIMICA_2022/0)",
+   "url": "https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_GEOQUIMICA_2022/MapServer/0",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "oefa-agua-superficial",
+   "institucion": "OEFA — Datos Abiertos",
+   "dataset": "Monitoreos de calidad de agua superficial (supervisión y evaluación ambiental), parámetros",
+   "url": "https://www.datosabiertos.gob.pe/sites/default/files/Monitoreos_AGUA_SUPERFICIAL.csv",
+   "http": 206,
+   "ok": true
+  },
+  {
+   "id": "oefa-emergencias",
+   "institucion": "OEFA (PIFA/ODES)",
+   "dataset": "Emergencias ambientales atendidas (derrames, fugas, incidentes) con fecha, administrado, s",
+   "url": "https://pifa.oefa.gob.pe/arcgis/rest/services/ODES/SERV_OD_INF_OEFA/MapServer/1",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "oefa-mineria-ilegal",
+   "institucion": "OEFA (PIFA)",
+   "dataset": "Áreas de minería ilegal (UFAFEMA-PPO, GORE, REINFO excluidos) y de minería informal (REINF",
+   "url": "https://pifa.oefa.gob.pe/arcgis/rest/services/REINFO/SERV_MIN_ILEGAL_AREA/MapServer",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "umc-ece-4p",
+   "institucion": "MINEDU — UMC",
+   "dataset": "ECE 2016 y 2018 (4.º primaria) por distrito, misma serie que ENLA 2024",
+   "url": "http://umc.minedu.gob.pe/wp-content/uploads/2025/04/4.-Distrital-4P-2016-2018-2024-Nivel-de-desempeño.xlsx",
+   "http": 206,
+   "ok": true
+  },
+  {
+   "id": "umc-ece-2s",
+   "institucion": "MINEDU — UMC",
+   "dataset": "ECE 2015–2019 (2.º secundaria) por distrito",
+   "url": "http://umc.minedu.gob.pe/wp-content/uploads/2020/06/4.-Distrital-2015-2019-2S-Nivel-de-desempeño.xlsx",
+   "http": 206,
+   "ok": true
+  },
+  {
+   "id": "escale-tendencias",
+   "institucion": "MINEDU — ESCALE (SIAGIE)",
+   "dataset": "Tendencias 2016: deserción interanual primaria (idCuadro 319) y atraso escolar primaria (i",
+   "url": "https://escale.minedu.gob.pe/ueetendencias2016",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "escale-padron",
+   "institucion": "MINEDU — ESCALE",
+   "dataset": "Padrón de servicios educativos (180 859 servicios, coordenadas reales, área, gestión, esta",
+   "url": "https://escale.minedu.gob.pe/documents/10156/958881/Padron_web_20260918.zip",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "cdc-metales",
+   "institucion": "CDC-MINSA",
+   "dataset": "Vigilancia de exposición a metales pesados y metaloides: tablero distrital 2020→ y salas s",
+   "url": "https://app7.dge.gob.pe/maps/sala_emp/",
+   "http": 206,
+   "ok": true
+  },
+  {
+   "id": "sien",
+   "institucion": "INS — CENAN",
+   "dataset": "SIEN: estado nutricional de niños y gestantes (anemia, desnutrición) por establecimiento",
+   "url": "https://www.datosabiertos.gob.pe/dataset/sien-sistema-de-informaci%C3%B3n-del-estado-nutricional-de-ni%C3%B1os-y-gestantes-per%C3%BA-inscenan",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "ana-snirh",
+   "institucion": "ANA (GeoSNIRH)",
+   "dataset": "Red de puntos de monitoreo de calidad de agua (3 255) con categoría ECA; fuentes contamina",
+   "url": "https://geosnirh.ana.gob.pe/server/rest/services/Público/",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "amazon-mining-watch",
+   "institucion": "Earth Genome — Amazon Mining Watch",
+   "dataset": "Detecciones de minería en la cuenca amazónica 2018–2025 (+ trimestres 2026)",
+   "url": "https://data.source.coop/earthgenome/amazon-mining-watch/amazon_basin_detections.geojson",
+   "http": 206,
+   "ok": true
+  },
+  {
+   "id": "ingemmet-aguas",
+   "institucion": "INGEMMET",
+   "dataset": "Geoquímica de aguas superficiales (SERV_GEOQUIMICA_2022/5)",
+   "url": "https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_GEOQUIMICA_2022/MapServer/5",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "ingemmet-atlas",
+   "institucion": "INGEMMET",
+   "dataset": "Atlas Geoquímico del Perú — anomalías principales As/Hg/Pb (SERV_ATLAS_GEOQUIMICO)",
+   "url": "https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_ATLAS_GEOQUIMICO/MapServer",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "minem-pam",
+   "institucion": "MINEM (vía INGEMMET GEOCATMIN)",
+   "dataset": "Inventario de Pasivos Ambientales Mineros (SERV_PASIVO_AMBIENTAL/0)",
+   "url": "https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_PASIVO_AMBIENTAL/MapServer/0",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "minem-reinfo",
+   "institucion": "MINEM DGFM (vía INGEMMET GEOCATMIN)",
+   "dataset": "REINFO — Registro Integral de Formalización Minera (SERV_REINFO/0)",
+   "url": "https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_REINFO/MapServer/0",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "ingemmet-pequena-mineria",
+   "institucion": "INGEMMET DRME",
+   "dataset": "Muestras de campo de pequeña minería y minería artesanal (SERV_PEQUENA_MINERIA/0)",
+   "url": "https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_PEQUENA_MINERIA/MapServer/0",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "oefa-pifa",
+   "institucion": "OEFA (PIFA), OSINERGMIN (GISEM), SERNANP",
+   "dataset": "Relaves, riesgo ambiental de unidades, pasivos de hidrocarburos, unidades mineras, lotes, ",
+   "url": "https://github.com/unimauro/observatorio-ambiental-peruano/blob/main/research/endpoints.json",
+   "http": 206,
+   "ok": true
+  },
+  {
+   "id": "sinadef",
+   "institucion": "MINSA — Datos Abiertos",
+   "dataset": "SINADEF — Información de fallecidos (microdato)",
+   "url": "https://www.datosabiertos.gob.pe/dataset/informaci%C3%B3n-de-fallecidos-del-sistema-inform%C3%A1tico-nacional-de-defunciones-sinadef-ministerio",
+   "http": 200,
+   "ok": true
+  },
+  {
+   "id": "enla-2024",
+   "institucion": "MINEDU — UMC",
+   "dataset": "ENLA 2024 — resultados por distrito, 4.º de primaria, lectura y matemática",
+   "url": "https://umc.minedu.gob.pe/bases-de-datos/",
+   "http": "error: RemoteDisconnected",
+   "ok": false
+  },
+  {
+   "id": "inei-censo-2017",
+   "institucion": "INEI (REDATAM CPV2017) — vía QHAWAY",
+   "dataset": "Servicios básicos por distrito (agua, desagüe, electricidad, internet), población",
+   "url": "https://censos2017.inei.gob.pe/redatam/",
+   "http": 206,
+   "ok": true
+  },
+  {
+   "id": "inei-pobreza-pnud",
+   "institucion": "INEI / PNUD — vía QHAWAY",
+   "dataset": "Pobreza monetaria distrital, IDH 2019, vulnerabilidad alimentaria, altitud",
+   "url": "https://github.com/unimauro/qhaway-dashboard",
+   "http": 206,
+   "ok": true
+  },
+  {
+   "id": "mef-siaf",
+   "institucion": "MEF — Datos Abiertos (SIAF) — vía QHAWAY (Postgres en VPS + JSON)",
+   "dataset": "Gasto público por distrito (PIA, PIM, devengado) 2021–2026",
+   "url": "https://datosabiertos.mef.gob.pe/dataset/presupuesto-y-ejecucion-de-gasto",
+   "http": 206,
+   "ok": true
+  },
+  {
+   "id": "geojson-distrital",
+   "institucion": "INEI / MINAM (límites) — repos juaneladio/peru-geojson y qhaway",
+   "dataset": "Límites distritales (1 826 polígonos, IDDIST)",
+   "url": "https://github.com/juaneladio/peru-geojson",
+   "http": 206,
+   "ok": true
+  },
+  {
+   "id": "eca-lmp",
+   "institucion": "MINAM / MINSA",
+   "dataset": "ECA Agua (DS 004-2017-MINAM), ECA Suelo (DS 011-2017-MINAM), LMP agua de consumo (DS 031-2",
+   "url": "https://www.gob.pe/institucion/minam/normas-legales/",
+   "http": 200,
+   "ok": true
+  }
+ ],
+ "fuentes_ok": 24,
+ "fuentes_total": 25,
+ "tests": {
+  "resultado": "12 passed in 0.18s",
+  "ok": true,
+  "lista": [
+   "UBIGEO de 6 dígitos, sin duplicados, 1 800–1 900 distritos",
+   "Ausencia de dato = null, nunca 0 (sedimentos, población)",
+   "Rangos: porcentajes 0–100, altitud −10–5 200 m, tasas < 3 000",
+   "Conteos de sedimentos, REINFO, PAM y emergencias coinciden con los totales descargados",
+   "Flags de cobertura coherentes con los datos",
+   "JSON estricto (sin NaN/Infinity) en todas las salidas",
+   "Correlaciones en [−1, 1], IC ordenados, n ≥ 30 en pares activos",
+   "Catálogo: todas las fuentes con URL, limitaciones, estado y uso",
+   "Sin campos de datos personales en las salidas",
+   "Casos: nivel A solo con URL abierta; UBIGEO existentes"
+  ]
+ },
+ "datos_generados": "2026-09-25T20:31:31",
+ "conteos": {
+  "distritos": 1826,
+  "sedimentos": 28184,
+  "pam": 6122,
+  "reinfo": 87334,
+  "emergencias": 3930,
+  "oefa_agua": 75061,
+  "defunciones": 1193803,
+  "enla": 1586
+ },
+ "como_reportar": "https://github.com/unimauro/observatorio-peru/issues/new?template=error-de-datos.md&title=%5BDato%5D+"
+}
