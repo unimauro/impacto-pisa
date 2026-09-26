@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react'
+import ReactECharts from 'echarts-for-react'
+import { CAT } from '../lib/colors'
 import { useNavigate, Link } from 'react-router-dom'
 import Mapa, { Leyenda } from '../components/Mapa'
 import { Titulo, Panel, Kpi, Evidencia, Aviso, Cargando, Error as Err } from '../components/ui'
@@ -31,10 +33,9 @@ export default function Panorama() {
           <p className="mt-2 text-2xl leading-tight font-display">La desigualdad pesa <strong>{fl ? Math.round(fl.r2_socio / Math.max(fl.ganancia_ambiente, 0.001)) : '…'} veces más</strong> que toda la contaminación medida en los resultados escolares del Perú.</p>
           <ul className="mt-3 text-sm space-y-1.5">
             <li><strong>Pobreza, ruralidad, altitud y falta de internet</strong> explican el {fl ? pct(fl.r2_socio * 100) : '…'} de las diferencias en lectura entre distritos.</li>
-            <li><strong>Arsénico, mercurio, plomo, pasivos, REINFO, minería ilegal y emergencias</strong>, todos juntos, añaden apenas {fl ? fmt(fl.ganancia_ambiente * 100, 1) : '…'} puntos.</li>
-            <li>Un distrito pobre y desconectado rinde mal <strong>con o sin minería</strong>. Ese es el hallazgo, y es robusto a los controles.</li>
+            <li><strong>Arsénico, mercurio, plomo, pasivos, REINFO, minería ilegal y emergencias</strong>, todos juntos, añaden apenas {fl ? fmt(fl.ganancia_ambiente * 100, 1) : '…'} puntos: un distrito pobre y desconectado rinde mal <strong>con o sin minería</strong>.</li>
             <li><strong>¿Afecta entonces la contaminación?</strong> Sí, y se ve: donde hay más arsénico en las cuencas hay menos alumnos en nivel satisfactorio (β = −0,15, p &lt; 0,001), y donde hay más minería ilegal hay más deserción en primaria (β = +0,14, p &lt; 0,001). Mercurio, plomo, pasivos y REINFO no muestran señal a esta escala.</li>
-            <li>Lo que no está medido es la exposición real: <strong>ningún dato abierto de agua de consumo ni de plomo o mercurio en sangre por distrito</strong>. Un promedio distrital de sedimentos de hace 20 años diluye cualquier daño local; los estudios con biomarcadores (La Oroya, Cerro de Pasco, Madre de Dios) sí lo documentan.</li>
+            <li>Lo que no está medido es la exposición real: <strong>ningún dato abierto de agua de consumo ni de plomo o mercurio en sangre por distrito</strong>. El promedio distrital diluye el daño local que los estudios con biomarcadores (La Oroya, Cerro de Pasco, Madre de Dios) sí documentan.</li>
           </ul>
           <p className="mt-3 text-sm"><Link className="inline-block rounded border border-agua px-3 py-1 text-agua hover:bg-agua/10" to="/conclusiones">Ver el modelo completo y las seis conclusiones</Link></p>
         </Panel>
@@ -43,7 +44,15 @@ export default function Panorama() {
           {ult && prev ? <div className="mt-2 grid grid-cols-3 gap-2">
             {([['matematica', 'Matemática'], ['lectura', 'Lectura'], ['ciencias', 'Ciencias']] as const).map(([k, l]) => { const d = (ult[k] as number) - (prev[k] as number); return <div key={k}><div className="font-display text-3xl leading-none">{fmt(ult[k] as number, 0)}</div><div className="text-xs text-ink2">{l}</div><div className={`text-xs ${d < 0 ? 'text-mina' : 'text-agua'}`}>{d >= 0 ? '+' : ''}{fmt(d, 0)} vs {prev.anio}</div><div className="text-xs text-ink3">{pct(ult[`${k}_bajo_nivel2`] as number)} bajo nivel 2</div></div> })}
           </div> : <Cargando que="PISA" />}
-          <p className="mt-2 text-sm"><Link className="underline" to="/pisa">Serie 2000–2025 y comparación con el mundo</Link></p>
+          {pisa && <ReactECharts style={{ height: 150 }} opts={{ renderer: 'svg' }} option={{
+            grid: { left: 34, right: 28, top: 22, bottom: 22 }, legend: { top: 0, itemWidth: 12, textStyle: { fontSize: 10 } }, tooltip: { trigger: 'axis' },
+            xAxis: { type: 'category', data: pisa.peru.map(r => r.anio), axisLabel: { fontSize: 10 }, axisLine: { lineStyle: { color: '#c8ccc9' } } },
+            yAxis: { type: 'value', min: 320, max: 420, axisLabel: { fontSize: 10 }, splitLine: { lineStyle: { color: '#e6e9e6' } } },
+            series: ([['matematica', 'Matemática', CAT.edu], ['lectura', 'Lectura', CAT.agua], ['ciencias', 'Ciencias', CAT.salud]] as const).map(([k, l, c]) => ({ name: l, type: 'line', data: pisa.peru.map(r => r[k] ?? null), itemStyle: { color: c }, lineStyle: { width: 2 }, symbolSize: 6, connectNulls: true })),
+          }} />}
+          <div className="mt-1 grid grid-cols-3 gap-2 text-xs text-ink2"><div>Puesto <strong className="text-ink">67</strong> de 90 en matemática</div><div>Puesto <strong className="text-ink">61</strong> de 90 en lectura</div><div>Puesto <strong className="text-ink">70</strong> de 91 en ciencias</div></div>
+          <p className="mt-1 text-xs text-ink2">Promedio OCDE 2025: 463 · 461 · 482.</p>
+          <p className="mt-2 text-sm"><Link className="inline-block rounded border border-line px-3 py-1 hover:bg-ground" to="/pisa">Serie completa y comparación con 91 países</Link></p>
         </Panel>
       </div>
       <div className="flex flex-wrap gap-2 mb-4">{(['A', 'B', 'C', 'D'] as const).map(n => <Evidencia key={n} n={n} />)}</div>
