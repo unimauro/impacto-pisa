@@ -30,8 +30,8 @@ export default function App() {
       <header className="border-b border-line bg-surface/90 backdrop-blur sticky top-0 z-40">
         <div className="mx-auto max-w-7xl px-4 flex flex-wrap items-center gap-x-6 gap-y-2 py-2">
           <NavLink to="/" className="flex items-center gap-2 mr-auto">
-            <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="rgb(var(--agua))" strokeWidth="2"/><circle cx="16" cy="16" r="8.5" fill="none" stroke="rgb(var(--mina))" strokeWidth="2"/><circle cx="16" cy="16" r="3" fill="rgb(var(--edu))"/></svg>
-            <span className="font-display text-xl leading-none">Impacto <span className="text-ink2">PISA</span></span>
+            <img src={`${import.meta.env.BASE_URL}favicon.svg`} width="30" height="30" alt="" className="rounded-md" />
+            <span className="leading-none"><span className="font-display text-xl">Impacto <span className="text-ink2">PISA</span></span><span className="hidden sm:block text-[11px] text-ink3 mt-0.5">impacto que pisa · Observatorio Perú</span></span>
           </NavLink>
           <nav aria-label="Secciones" className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
             {NAV.map(([to, label]) => (

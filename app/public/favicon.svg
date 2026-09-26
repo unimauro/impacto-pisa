@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#f4f6f3"/><circle cx="32" cy="32" r="24" fill="none" stroke="#0b9389" stroke-width="4"/><circle cx="32" cy="32" r="14" fill="none" stroke="#c25a1e" stroke-width="4"/><circle cx="32" cy="32" r="5" fill="#4c5bd4"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0b9389"/>
+  <!-- huella: planta + talón + dedos -->
+  <g fill="#f4f6f3">
+    <path d="M27 20c-5 0-9 6-9 14 0 5 2 8 3 11 1 4 2 8 6 8s6-3 7-8c1-3 3-6 3-11 0-8-4-14-10-14z"/>
+    <ellipse cx="18" cy="16.5" rx="3.2" ry="4"/>
+    <ellipse cx="25" cy="12.5" rx="3.4" ry="4.2"/>
+    <ellipse cx="32.5" cy="12" rx="3.1" ry="3.9"/>
+    <ellipse cx="39" cy="14.5" rx="2.7" ry="3.4"/>
+    <ellipse cx="44" cy="19" rx="2.3" ry="2.9"/>
+  </g>
+  <!-- impacto: ondas -->
+  <g fill="none" stroke="#c25a1e" stroke-width="3" stroke-linecap="round">
+    <path d="M46 38a10 10 0 0 1 0 14"/>
+    <path d="M51 33a17 17 0 0 1 0 24"/>
+  </g>
+</svg>
